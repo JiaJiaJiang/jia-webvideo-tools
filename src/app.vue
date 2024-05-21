@@ -133,7 +133,7 @@ dialog {
 }
 </style>
 <script>
-import { Frame, GIF } from 'imagescript';
+const { Frame, GIF } = ImageScript;
 export default {
 	props: [],
 	data() {
