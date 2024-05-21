@@ -1,4 +1,4 @@
-(function(){"use strict";try{if(typeof document<"u"){var d=document.createElement("style");d.appendChild(document.createTextNode("#jia-video-tool[data-v-057d7473]{position:fixed;border:1px solid #ccc;background-color:#999;border-radius:.3em}#jia-video-tool [opt][data-v-057d7473]{user-select:none;cursor:pointer;padding:0 .1em;vertical-align:middle}#jia-video-tool [opt][data-v-057d7473]:hover,#jia-video-tool [opt][actived=true][data-v-057d7473]{background-color:#333}#jia-video-tool>div[data-v-057d7473]{padding:.2em;display:flex}#jia-video-tool>div div[data-v-057d7473]{word-wrap:nowrap;word-break:keep-all;display:inline-block}#jia-video-tool #row2>input[data-v-057d7473]{width:4em}#jia-video-tool input[data-v-057d7473]{min-width:3em}#range_selector[data-v-057d7473]{border:2px dashed #6d8500;box-shadow:0 0 0 100vmax #000a;position:fixed;pointer-events:none}dialog[data-v-057d7473]{position:fixed;display:flex;padding:0;top:0;left:0;justify-content:center;border:0;max-width:100vw;max-height:100vh;align-items:center;width:100%;height:100%;background:#000000b4}dialog canvas[data-v-057d7473],dialog img[data-v-057d7473]{max-width:90%;max-height:90%;border:2px solid #000}.fadeLoop[data-v-057d7473]{animation:fadeLoop-057d7473 1s infinite}@keyframes fadeLoop-057d7473{0%{opacity:1}50%{opacity:0}to{opacity:1}}")),document.head.appendChild(d)}}catch(o){console.error("vite-plugin-css-injected-by-js",o)}})();
+(function(){"use strict";try{if(typeof document<"u"){var e=document.createElement("style");e.appendChild(document.createTextNode("#jia-video-tool[data-v-e7f5c36f]{position:fixed;border:1px solid #ccc;background-color:#999;border-radius:.3em}#jia-video-tool [opt][data-v-e7f5c36f]{user-select:none;cursor:pointer;padding:0 .1em;vertical-align:middle}#jia-video-tool [opt][data-v-e7f5c36f]:hover,#jia-video-tool [opt][actived=true][data-v-e7f5c36f]{background-color:#333}#jia-video-tool>div[data-v-e7f5c36f]{padding:.2em;display:flex}#jia-video-tool>div div[data-v-e7f5c36f]{word-wrap:nowrap;word-break:keep-all;display:inline-block}#jia-video-tool #row2>input[data-v-e7f5c36f]{width:4em}#jia-video-tool input[data-v-e7f5c36f]{min-width:3em}#range_selector[data-v-e7f5c36f]{border:2px dashed #6d8500;box-shadow:0 0 0 100vmax #000a;position:fixed;pointer-events:none}dialog[data-v-e7f5c36f]{position:fixed;display:flex;padding:0;top:0;left:0;justify-content:center;border:0;max-width:100vw;max-height:100vh;align-items:center;width:100%;height:100%;background:#000000b4}dialog canvas[data-v-e7f5c36f],dialog img[data-v-e7f5c36f]{max-width:90%;max-height:90%;border:2px solid #000}.fadeLoop[data-v-e7f5c36f]{animation:fadeLoop-e7f5c36f 1s infinite}@keyframes fadeLoop-e7f5c36f{0%{opacity:1}50%{opacity:0}to{opacity:1}}")),document.head.appendChild(e)}}catch(o){console.error("vite-plugin-css-injected-by-js",o)}})();
 var Ci = {};
 /**
 * @vue/shared v3.4.27
@@ -4625,7 +4625,7 @@ const Xc = (e, t) => {
   watch: {
     tool(e) {
       const t = this.video;
-      e === "gif" ? (t._rawStyle || (t._rawStyle = t.style["aspect-ratio"] || ""), t.style["aspect-ratio"] = t.videoWidth / t.videoHeight) : t.style["aspect-ratio"] = t._rawStyle;
+      e === "gif" ? (t._rawStyle || (t._rawStyle = t.style["object-fit"] || ""), t.style["object-fit"] = "fill") : t.style["object-fit"] = t._rawStyle;
     }
   },
   methods: {
@@ -4960,7 +4960,7 @@ function Ef(e, t, n, o, i, r) {
     ])
   ], 64);
 }
-const Nf = /* @__PURE__ */ Xc(ef, [["render", Ef], ["__scopeId", "data-v-057d7473"]]), yf = Bc(Nf), po = document.createElement("div");
+const Nf = /* @__PURE__ */ Xc(ef, [["render", Ef], ["__scopeId", "data-v-e7f5c36f"]]), yf = Bc(Nf), po = document.createElement("div");
 po.style = "position:fixed;top:0;left:0;z-index:2147483647;font-size: 12px!important;";
 let Ut, yt;
 window.addEventListener("mousedown", (e) => {

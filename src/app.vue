@@ -160,11 +160,11 @@ export default {
 			const v=this.video;
 			if(value==='gif'){
 				if(!v._rawStyle){
-					v._rawStyle=v.style['aspect-ratio']||'';
+					v._rawStyle=v.style['object-fit']||'';
 				}
-				v.style['aspect-ratio']=v.videoWidth/v.videoHeight;
+				v.style['object-fit']='fill';
 			}else{
-				v.style['aspect-ratio']=v._rawStyle;
+				v.style['object-fit']=v._rawStyle;
 			}
 		}
 	},
