@@ -1,0 +1,21 @@
+{
+	"name": "jia-video-tools",
+	"version": "1.0.0",
+	"description": "",
+	"main": "src/main.js",
+	"scripts": {
+		"build": "vite build",
+		"start": "node test/server.js"
+	},
+	"author": "luojia@luojia.me",
+	"license": "LGPL-3.0-only",
+	"devDependencies": {
+		"@vitejs/plugin-vue": "^5.0.4",
+		"express": "^4.19.2",
+		"imagescript": "^1.3.0",
+		"sass": "^1.75.0",
+		"vite": "^5.2.9",
+		"vite-express": "^0.16.0",
+		"vite-plugin-css-injected-by-js": "^3.5.1"
+	}
+}
