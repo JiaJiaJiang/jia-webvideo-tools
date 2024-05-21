@@ -36,7 +36,6 @@ window.addEventListener('mousedown', ev => {
 	if (!v) v = lastVideo;
 	else {
 		lastVideo = v;
-		// console.log(ev);
 		if (!vm) {
 			document.body.appendChild(div);
 			vm = app.mount(div);

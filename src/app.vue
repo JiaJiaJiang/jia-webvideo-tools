@@ -141,7 +141,7 @@ export default {
 			createdBlobURLs: new Set(),
 			video: null,
 			showing: false,
-			tool: null,
+			tool: '',
 			result: null,
 			time: 0,
 			gifTime: [0, 0],
@@ -156,16 +156,17 @@ export default {
 		};
 	},
 	watch: {
-	},
-	computed: {
-		/* time:{
-			get(){
-				return this.tText(this.getTime());
-			},
-			set(v){
-				this.setTime(v);
+		tool(value){
+			const v=this.video;
+			if(value==='gif'){
+				if(!v._rawStyle){
+					v._rawStyle=v.style['aspect-ratio']||'';
+				}
+				v.style['aspect-ratio']=v.videoWidth/v.videoHeight;
+			}else{
+				v.style['aspect-ratio']=v._rawStyle;
 			}
-		} */
+		}
 	},
 	methods: {
 		setTime(t) {
@@ -245,6 +246,7 @@ export default {
 		async startRecordGIF() {
 			if (!this.video) return;
 			const v = this.video, canvas = this.$refs.canvas;
+			canvas.style['aspect-ratio'] = canvas.width / canvas.height;
 			v.pause();
 			try {
 				this.gifRecording = true;

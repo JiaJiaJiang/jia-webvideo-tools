@@ -1,4 +1,4 @@
-(function(){"use strict";try{if(typeof document<"u"){var e=document.createElement("style");e.appendChild(document.createTextNode("#jia-video-tool[data-v-dee80196]{position:fixed;border:1px solid #ccc;background-color:#999;border-radius:.3em}#jia-video-tool [opt][data-v-dee80196]{user-select:none;cursor:pointer;padding:0 .1em;vertical-align:middle}#jia-video-tool [opt][data-v-dee80196]:hover,#jia-video-tool [opt][actived=true][data-v-dee80196]{background-color:#333}#jia-video-tool>div[data-v-dee80196]{padding:.2em;display:flex}#jia-video-tool>div div[data-v-dee80196]{word-wrap:nowrap;word-break:keep-all;display:inline-block}#jia-video-tool #row2>input[data-v-dee80196]{width:4em}#jia-video-tool input[data-v-dee80196]{min-width:3em}#range_selector[data-v-dee80196]{border:2px dashed #6d8500;box-shadow:0 0 0 100vmax #000a;position:fixed;pointer-events:none}dialog[data-v-dee80196]{position:fixed;display:flex;padding:0;top:0;left:0;justify-content:center;border:0;max-width:100vw;max-height:100vh;align-items:center;width:100%;height:100%;background:#000000b4}dialog canvas[data-v-dee80196],dialog img[data-v-dee80196]{max-width:90%;max-height:90%;border:2px solid #000}.fadeLoop[data-v-dee80196]{animation:fadeLoop-dee80196 1s infinite}@keyframes fadeLoop-dee80196{0%{opacity:1}50%{opacity:0}to{opacity:1}}")),document.head.appendChild(e)}}catch(d){console.error("vite-plugin-css-injected-by-js",d)}})();
+(function(){"use strict";try{if(typeof document<"u"){var d=document.createElement("style");d.appendChild(document.createTextNode("#jia-video-tool[data-v-057d7473]{position:fixed;border:1px solid #ccc;background-color:#999;border-radius:.3em}#jia-video-tool [opt][data-v-057d7473]{user-select:none;cursor:pointer;padding:0 .1em;vertical-align:middle}#jia-video-tool [opt][data-v-057d7473]:hover,#jia-video-tool [opt][actived=true][data-v-057d7473]{background-color:#333}#jia-video-tool>div[data-v-057d7473]{padding:.2em;display:flex}#jia-video-tool>div div[data-v-057d7473]{word-wrap:nowrap;word-break:keep-all;display:inline-block}#jia-video-tool #row2>input[data-v-057d7473]{width:4em}#jia-video-tool input[data-v-057d7473]{min-width:3em}#range_selector[data-v-057d7473]{border:2px dashed #6d8500;box-shadow:0 0 0 100vmax #000a;position:fixed;pointer-events:none}dialog[data-v-057d7473]{position:fixed;display:flex;padding:0;top:0;left:0;justify-content:center;border:0;max-width:100vw;max-height:100vh;align-items:center;width:100%;height:100%;background:#000000b4}dialog canvas[data-v-057d7473],dialog img[data-v-057d7473]{max-width:90%;max-height:90%;border:2px solid #000}.fadeLoop[data-v-057d7473]{animation:fadeLoop-057d7473 1s infinite}@keyframes fadeLoop-057d7473{0%{opacity:1}50%{opacity:0}to{opacity:1}}")),document.head.appendChild(d)}}catch(o){console.error("vite-plugin-css-injected-by-js",o)}})();
 var Ci = {};
 /**
 * @vue/shared v3.4.27
@@ -11,7 +11,7 @@ function Le(e, t) {
   const n = new Set(e.split(","));
   return t ? (o) => n.has(o.toLowerCase()) : (o) => n.has(o);
 }
-const K = Ci.NODE_ENV !== "production" ? Object.freeze({}) : {}, yt = Ci.NODE_ENV !== "production" ? Object.freeze([]) : [], X = () => {
+const K = Ci.NODE_ENV !== "production" ? Object.freeze({}) : {}, bt = Ci.NODE_ENV !== "production" ? Object.freeze([]) : [], X = () => {
 }, Ar = () => !1, Wt = (e) => e.charCodeAt(0) === 111 && e.charCodeAt(1) === 110 && // uppercase letter
 (e.charCodeAt(2) > 122 || e.charCodeAt(2) < 97), gn = (e) => e.startsWith("onUpdate:"), Y = Object.assign, ho = (e, t) => {
   const n = e.indexOf(t);
@@ -147,7 +147,7 @@ function is() {
   return Ee;
 }
 let ct;
-class bo {
+class yo {
   constructor(t, n, o, i) {
     this.fn = t, this.trigger = n, this.scheduler = o, this.active = !0, this.deps = [], this._dirtyLevel = 4, this._trackId = 0, this._runnings = 0, this._shouldSchedule = !1, this._depsLength = 0, os(this, i);
   }
@@ -206,7 +206,7 @@ function He() {
   const e = Ii.pop();
   Qe = e === void 0 ? !0 : e;
 }
-function yo() {
+function bo() {
   zn++;
 }
 function vo() {
@@ -224,7 +224,7 @@ function Pi(e, t, n) {
 const Yn = [];
 function Mi(e, t, n) {
   var o;
-  yo();
+  bo();
   for (const i of e.keys()) {
     let r;
     i._dirtyLevel < t && (r ?? (r = e.get(i) === i._trackId)) && (i._shouldSchedule || (i._shouldSchedule = i._dirtyLevel === 0), i._dirtyLevel = t), i._shouldSchedule && (r ?? (r = e.get(i) === i._trackId)) && (Z.NODE_ENV !== "production" && ((o = i.onTrigger) == null || o.call(i, Y({ effect: i }, n))), i.trigger(), (!i._runnings || i.allowRecurse) && i._dirtyLevel !== 2 && (i._shouldSchedule = !1, i.scheduler && Yn.push(i.scheduler)));
@@ -275,7 +275,7 @@ function Te(e, t, n, o, i, r) {
         vt(e) && c.push(s.get(ft));
         break;
     }
-  yo();
+  bo();
   for (const f of c)
     f && Mi(
       f,
@@ -306,7 +306,7 @@ function ls() {
     };
   }), ["push", "pop", "shift", "unshift", "splice"].forEach((t) => {
     e[t] = function(...n) {
-      $e(), yo();
+      $e(), bo();
       const o = F(this)[t].apply(this, n);
       return vo(), He(), o;
     };
@@ -571,9 +571,9 @@ const Es = {
   get: /* @__PURE__ */ Vn(!1, !1)
 }, Ns = {
   get: /* @__PURE__ */ Vn(!1, !0)
-}, bs = {
-  get: /* @__PURE__ */ Vn(!0, !1)
 }, ys = {
+  get: /* @__PURE__ */ Vn(!0, !1)
+}, bs = {
   get: /* @__PURE__ */ Vn(!0, !0)
 };
 function Hi(e, t, n) {
@@ -626,7 +626,7 @@ function Wi(e) {
     e,
     !0,
     us,
-    bs,
+    ys,
     Ki
   );
 }
@@ -635,7 +635,7 @@ function Ce(e) {
     e,
     !0,
     ds,
-    ys,
+    bs,
     Bi
   );
 }
@@ -678,7 +678,7 @@ function xs(e) {
 const xo = (e) => W(e) ? wo(e) : e, Vo = (e) => W(e) ? Wi(e) : e, Vs = "Computed is still dirty after getter evaluation, likely because a computed is mutating its own dependency in its getter. State mutations in computed getters should be avoided.  Check the docs for more details: https://vuejs.org/guide/essentials/computed.html#getters-should-be-side-effect-free";
 class Gi {
   constructor(t, n, o, i) {
-    this.getter = t, this._setter = n, this.dep = void 0, this.__v_isRef = !0, this.__v_isReadonly = !1, this.effect = new bo(
+    this.getter = t, this._setter = n, this.dep = void 0, this.__v_isRef = !0, this.__v_isReadonly = !1, this.effect = new yo(
       () => t(this._value),
       () => jn(
         this,
@@ -1302,7 +1302,7 @@ function $n(e) {
           ), Reflect.get(M, se, le);
         }
       }) : J;
-      k = be(
+      k = ye(
         d.call(
           ge,
           J,
@@ -1315,7 +1315,7 @@ function $n(e) {
       ), B = c;
     } else {
       const J = t;
-      a.NODE_ENV !== "production" && c === p && _n(), k = be(
+      a.NODE_ENV !== "production" && c === p && _n(), k = ye(
         J.length > 1 ? J(
           a.NODE_ENV !== "production" ? Ce(p) : p,
           a.NODE_ENV !== "production" ? {
@@ -1373,7 +1373,7 @@ const sr = (e) => {
   const i = t.indexOf(o), r = n ? n.indexOf(o) : -1, s = (c) => {
     t[i] = c, n && (r > -1 ? n[r] = c : c.patchFlag > 0 && (e.dynamicChildren = [...n, c]));
   };
-  return [be(o), s];
+  return [ye(o), s];
 };
 function Ro(e, t = !0) {
   let n;
@@ -1543,7 +1543,7 @@ function lr(e, t, {
   B.allowRecurse = !!t;
   let q;
   i === "sync" ? q = B : i === "post" ? q = () => de(B, d && d.suspense) : (B.pre = !0, d && (B.id = d.uid), q = () => Cn(B));
-  const z = new bo(p, X, q), J = is(), ge = () => {
+  const z = new yo(p, X, q), J = is(), ge = () => {
     z.stop(), J && ho(J.effects, z);
   };
   return a.NODE_ENV !== "production" && (z.onTrack = s, z.onTrigger = c), t ? n ? B() : k = z.run() : i === "post" ? de(
@@ -1676,9 +1676,9 @@ function Sn(e, t, n = te, o = !1) {
 const Ue = (e) => (t, n = te) => (
   // post-create lifecycle registrations are noops during SSR (except for serverPrefetch)
   (!Rn || e === "sp") && Sn(e, (...o) => t(...o), n)
-), hl = Ue("bm"), gl = Ue("m"), ml = Ue("bu"), _l = Ue("u"), El = Ue("bum"), ar = Ue("um"), Nl = Ue("sp"), bl = Ue(
+), hl = Ue("bm"), gl = Ue("m"), ml = Ue("bu"), _l = Ue("u"), El = Ue("bum"), ar = Ue("um"), Nl = Ue("sp"), yl = Ue(
   "rtg"
-), yl = Ue(
+), bl = Ue(
   "rtc"
 );
 function vl(e, t = te) {
@@ -1960,7 +1960,7 @@ function Dl(e) {
   function ue($, L) {
     T(L) ? L.forEach((Oe) => $(Oe.bind(n))) : L && $(L.bind(n));
   }
-  if (ue(hl, p), ue(gl, N), ue(ml, V), ue(_l, I), ue(al, P), ue(dl, he), ue(vl, se), ue(yl, ge), ue(bl, M), ue(El, B), ue(ar, z), ue(Nl, le), T(Se))
+  if (ue(hl, p), ue(gl, N), ue(ml, V), ue(_l, I), ue(al, P), ue(dl, he), ue(vl, se), ue(bl, ge), ue(yl, M), ue(El, B), ue(ar, z), ue(Nl, le), T(Se))
     if (Se.length) {
       const $ = e.exposed || (e.exposed = {});
       Se.forEach((L) => {
@@ -2242,7 +2242,7 @@ function Fl(e, t, n, o = !1) {
   e.propsDefaults = /* @__PURE__ */ Object.create(null), Er(e, t, i, r);
   for (const s in e.propsOptions[0])
     s in i || (i[s] = void 0);
-  a.NODE_ENV !== "production" && br(t || {}, i, e), n ? e.props = o ? i : ws(i) : e.type.props ? e.props = i : e.props = r, e.attrs = r;
+  a.NODE_ENV !== "production" && yr(t || {}, i, e), n ? e.props = o ? i : ws(i) : e.type.props ? e.props = i : e.props = r, e.attrs = r;
 }
 function Al(e) {
   for (; e; ) {
@@ -2310,7 +2310,7 @@ function jl(e, t, n, o) {
       for (const p in r)
         (!t || !A(t, p)) && (delete r[p], d = !0);
   }
-  d && Te(e.attrs, "set", ""), a.NODE_ENV !== "production" && br(t || {}, i, e);
+  d && Te(e.attrs, "set", ""), a.NODE_ENV !== "production" && yr(t || {}, i, e);
 }
 function Er(e, t, n, o) {
   const [i, r] = e.propsOptions;
@@ -2384,7 +2384,7 @@ function Nr(e, t, n = !1) {
     !n && t.mixins.length && t.mixins.forEach(g), e.extends && g(e.extends), e.mixins && e.mixins.forEach(g);
   }
   if (!r && !f)
-    return W(e) && o.set(e, yt), yt;
+    return W(e) && o.set(e, bt), bt;
   if (T(r))
     for (let g = 0; g < r.length; g++) {
       a.NODE_ENV !== "production" && !Q(r[g]) && O("props must be strings when using array syntax.", r[g]);
@@ -2425,7 +2425,7 @@ function ci(e, t) {
 function fi(e, t) {
   return T(t) ? t.findIndex((n) => ci(n, e)) : S(t) && ci(t, e) ? 0 : -1;
 }
-function br(e, t, n) {
+function yr(e, t, n) {
   const o = F(t), i = n.propsOptions[0];
   for (const r in i) {
     let s = i[r];
@@ -2492,7 +2492,7 @@ function ai(e) {
 function kl(...e) {
   return e.some((t) => t.toLowerCase() === "boolean");
 }
-const yr = (e) => e[0] === "_" || e === "$stable", Fo = (e) => T(e) ? e.map(be) : [be(e)], Kl = (e, t, n) => {
+const br = (e) => e[0] === "_" || e === "$stable", Fo = (e) => T(e) ? e.map(ye) : [ye(e)], Kl = (e, t, n) => {
   if (t._n)
     return t;
   const o = el((...i) => (a.NODE_ENV !== "production" && te && (!n || n.root === te.root) && O(
@@ -2502,7 +2502,7 @@ const yr = (e) => e[0] === "_" || e === "$stable", Fo = (e) => T(e) ? e.map(be) 
 }, vr = (e, t, n) => {
   const o = e._ctx;
   for (const i in e) {
-    if (yr(i))
+    if (br(i))
       continue;
     const r = e[i];
     if (S(r))
@@ -2538,7 +2538,7 @@ const yr = (e) => e[0] === "_" || e === "$stable", Fo = (e) => T(e) ? e.map(be) 
     t && (Or(e, t), s = { default: 1 });
   if (r)
     for (const c in i)
-      !yr(c) && s[c] == null && delete i[c];
+      !br(c) && s[c] == null && delete i[c];
 };
 function lo(e, t, n, o, i = !1) {
   if (T(e)) {
@@ -2630,10 +2630,10 @@ function zl(e, t) {
     nextSibling: N,
     setScopeId: V = X,
     insertStaticContent: I
-  } = e, P = (l, u, h, m = null, _ = null, y = null, w = void 0, b = null, v = a.NODE_ENV !== "production" && at ? !1 : !!u.dynamicChildren) => {
+  } = e, P = (l, u, h, m = null, _ = null, b = null, w = void 0, y = null, v = a.NODE_ENV !== "production" && at ? !1 : !!u.dynamicChildren) => {
     if (l === u)
       return;
-    l && !It(l, u) && (m = Qt(l), Be(l, _, y, !0), l = null), u.patchFlag === -2 && (v = !1, u.dynamicChildren = null);
+    l && !It(l, u) && (m = Qt(l), Be(l, _, b, !0), l = null), u.patchFlag === -2 && (v = !1, u.dynamicChildren = null);
     const { type: E, ref: x, shapeFlag: C } = u;
     switch (E) {
       case Yt:
@@ -2652,9 +2652,9 @@ function zl(e, t) {
           h,
           m,
           _,
-          y,
-          w,
           b,
+          w,
+          y,
           v
         );
         break;
@@ -2665,9 +2665,9 @@ function zl(e, t) {
           h,
           m,
           _,
-          y,
-          w,
           b,
+          w,
+          y,
           v
         ) : C & 6 ? Lo(
           l,
@@ -2675,9 +2675,9 @@ function zl(e, t) {
           h,
           m,
           _,
-          y,
-          w,
           b,
+          w,
+          y,
           v
         ) : C & 64 || C & 128 ? E.process(
           l,
@@ -2685,14 +2685,14 @@ function zl(e, t) {
           h,
           m,
           _,
-          y,
-          w,
           b,
+          w,
+          y,
           v,
           Tt
         ) : a.NODE_ENV !== "production" && O("Invalid VNode type:", E, `(${typeof E})`);
     }
-    x != null && _ && lo(x, l && l.ref, y, u || l, !u);
+    x != null && _ && lo(x, l && l.ref, b, u || l, !u);
   }, he = (l, u, h, m) => {
     if (l == null)
       o(
@@ -2740,31 +2740,31 @@ function zl(e, t) {
     for (; l && l !== u; )
       h = N(l), i(l), l = h;
     i(u);
-  }, ge = (l, u, h, m, _, y, w, b, v) => {
+  }, ge = (l, u, h, m, _, b, w, y, v) => {
     u.type === "svg" ? w = "svg" : u.type === "math" && (w = "mathml"), l == null ? M(
       u,
       h,
       m,
       _,
-      y,
-      w,
       b,
+      w,
+      y,
       v
     ) : Se(
       l,
       u,
       _,
-      y,
-      w,
       b,
+      w,
+      y,
       v
     );
-  }, M = (l, u, h, m, _, y, w, b) => {
+  }, M = (l, u, h, m, _, b, w, y) => {
     let v, E;
     const { props: x, shapeFlag: C, transition: D, dirs: R } = l;
     if (v = l.el = s(
       l.type,
-      y,
+      b,
       x && x.is,
       x
     ), C & 8 ? g(v, l.children) : C & 16 && le(
@@ -2773,9 +2773,9 @@ function zl(e, t) {
       null,
       m,
       _,
-      kn(l, y),
+      kn(l, b),
       w,
-      b
+      y
     ), R && ot(l, null, m, "created"), se(v, l, l.scopeId, w, m), x) {
       for (const U in x)
         U !== "value" && !jt(U) && r(
@@ -2783,13 +2783,13 @@ function zl(e, t) {
           U,
           null,
           x[U],
-          y,
+          b,
           l.children,
           m,
           _,
           Re
         );
-      "value" in x && r(v, "value", null, x.value, y), (E = x.onVnodeBeforeMount) && xe(E, m, l);
+      "value" in x && r(v, "value", null, x.value, b), (E = x.onVnodeBeforeMount) && xe(E, m, l);
     }
     a.NODE_ENV !== "production" && (Object.defineProperty(v, "__vnode", {
       value: l,
@@ -2804,11 +2804,11 @@ function zl(e, t) {
     }, _);
   }, se = (l, u, h, m, _) => {
     if (h && V(l, h), m)
-      for (let y = 0; y < m.length; y++)
-        V(l, m[y]);
+      for (let b = 0; b < m.length; b++)
+        V(l, m[b]);
     if (_) {
-      let y = _.subTree;
-      if (a.NODE_ENV !== "production" && y.patchFlag > 0 && y.patchFlag & 2048 && (y = Ro(y.children) || y), u === y) {
+      let b = _.subTree;
+      if (a.NODE_ENV !== "production" && b.patchFlag > 0 && b.patchFlag & 2048 && (b = Ro(b.children) || b), u === b) {
         const w = _.vnode;
         se(
           l,
@@ -2819,9 +2819,9 @@ function zl(e, t) {
         );
       }
     }
-  }, le = (l, u, h, m, _, y, w, b, v = 0) => {
+  }, le = (l, u, h, m, _, b, w, y, v = 0) => {
     for (let E = v; E < l.length; E++) {
-      const x = l[E] = b ? ze(l[E]) : be(l[E]);
+      const x = l[E] = y ? ze(l[E]) : ye(l[E]);
       P(
         null,
         x,
@@ -2829,13 +2829,13 @@ function zl(e, t) {
         h,
         m,
         _,
-        y,
+        b,
         w,
-        b
+        y
       );
     }
-  }, Se = (l, u, h, m, _, y, w) => {
-    const b = u.el = l.el;
+  }, Se = (l, u, h, m, _, b, w) => {
+    const y = u.el = l.el;
     let { patchFlag: v, dynamicChildren: E, dirs: x } = u;
     v |= l.patchFlag & 16;
     const C = l.props || K, D = u.props || K;
@@ -2843,25 +2843,25 @@ function zl(e, t) {
     if (h && it(h, !1), (R = D.onVnodeBeforeUpdate) && xe(R, h, u, l), x && ot(u, l, h, "beforeUpdate"), h && it(h, !0), a.NODE_ENV !== "production" && at && (v = 0, w = !1, E = null), E ? (ke(
       l.dynamicChildren,
       E,
-      b,
+      y,
       h,
       m,
       kn(u, _),
-      y
+      b
     ), a.NODE_ENV !== "production" && an(l, u)) : w || Oe(
       l,
       u,
-      b,
+      y,
       null,
       h,
       m,
       kn(u, _),
-      y,
+      b,
       !1
     ), v > 0) {
       if (v & 16)
         me(
-          b,
+          y,
           u,
           C,
           D,
@@ -2869,12 +2869,12 @@ function zl(e, t) {
           m,
           _
         );
-      else if (v & 2 && C.class !== D.class && r(b, "class", null, D.class, _), v & 4 && r(b, "style", C.style, D.style, _), v & 8) {
+      else if (v & 2 && C.class !== D.class && r(y, "class", null, D.class, _), v & 4 && r(y, "style", C.style, D.style, _), v & 8) {
         const j = u.dynamicProps;
         for (let U = 0; U < j.length; U++) {
           const G = j[U], ee = C[G], _e = D[G];
           (_e !== ee || G === "value") && r(
-            b,
+            y,
             G,
             ee,
             _e,
@@ -2886,10 +2886,10 @@ function zl(e, t) {
           );
         }
       }
-      v & 1 && l.children !== u.children && g(b, u.children);
+      v & 1 && l.children !== u.children && g(y, u.children);
     } else
       !w && E == null && me(
-        b,
+        y,
         u,
         C,
         D,
@@ -2900,9 +2900,9 @@ function zl(e, t) {
     ((R = D.onVnodeUpdated) || x) && de(() => {
       R && xe(R, h, u, l), x && ot(u, l, h, "updated");
     }, m);
-  }, ke = (l, u, h, m, _, y, w) => {
-    for (let b = 0; b < u.length; b++) {
-      const v = l[b], E = u[b], x = (
+  }, ke = (l, u, h, m, _, b, w) => {
+    for (let y = 0; y < u.length; y++) {
+      const v = l[y], E = u[y], x = (
         // oldVNode may be an errored async setup() component inside Suspense
         // which will not have a mounted element
         v.el && // - In the case of a Fragment, we need to provide the actual parent
@@ -2923,49 +2923,49 @@ function zl(e, t) {
         null,
         m,
         _,
-        y,
+        b,
         w,
         !0
       );
     }
-  }, me = (l, u, h, m, _, y, w) => {
+  }, me = (l, u, h, m, _, b, w) => {
     if (h !== m) {
       if (h !== K)
-        for (const b in h)
-          !jt(b) && !(b in m) && r(
+        for (const y in h)
+          !jt(y) && !(y in m) && r(
             l,
-            b,
-            h[b],
+            y,
+            h[y],
             null,
             w,
             u.children,
             _,
-            y,
+            b,
             Re
           );
-      for (const b in m) {
-        if (jt(b))
+      for (const y in m) {
+        if (jt(y))
           continue;
-        const v = m[b], E = h[b];
-        v !== E && b !== "value" && r(
+        const v = m[y], E = h[y];
+        v !== E && y !== "value" && r(
           l,
-          b,
+          y,
           E,
           v,
           w,
           u.children,
           _,
-          y,
+          b,
           Re
         );
       }
       "value" in m && r(l, "value", h.value, m.value, w);
     }
-  }, Xt = (l, u, h, m, _, y, w, b, v) => {
+  }, Xt = (l, u, h, m, _, b, w, y, v) => {
     const E = u.el = l ? l.el : c(""), x = u.anchor = l ? l.anchor : c("");
     let { patchFlag: C, dynamicChildren: D, slotScopeIds: R } = u;
     a.NODE_ENV !== "production" && // #5523 dev root fragment may inherit directives
-    (at || C & 2048) && (C = 0, v = !1, D = null), R && (b = b ? b.concat(R) : R), l == null ? (o(E, h, m), o(x, h, m), le(
+    (at || C & 2048) && (C = 0, v = !1, D = null), R && (y = y ? y.concat(R) : R), l == null ? (o(E, h, m), o(x, h, m), le(
       // #10007
       // such fragment like `<></>` will be compiled into
       // a fragment which doesn't have a children.
@@ -2974,9 +2974,9 @@ function zl(e, t) {
       h,
       x,
       _,
-      y,
-      w,
       b,
+      w,
+      y,
       v
     )) : C > 0 && C & 64 && D && // #2715 the previous fragment could've been a BAILed one as a result
     // of renderSlot() with no valid children
@@ -2985,9 +2985,9 @@ function zl(e, t) {
       D,
       h,
       _,
-      y,
+      b,
       w,
-      b
+      y
     ), a.NODE_ENV !== "production" ? an(l, u) : (
       // #2080 if the stable fragment has a key, it's a <template v-for> that may
       //  get moved around. Make sure all root level vnodes inherit el.
@@ -3005,13 +3005,13 @@ function zl(e, t) {
       h,
       x,
       _,
-      y,
-      w,
       b,
+      w,
+      y,
       v
     );
-  }, Lo = (l, u, h, m, _, y, w, b, v) => {
-    u.slotScopeIds = b, l == null ? u.shapeFlag & 512 ? _.ctx.activate(
+  }, Lo = (l, u, h, m, _, b, w, y, v) => {
+    u.slotScopeIds = y, l == null ? u.shapeFlag & 512 ? _.ctx.activate(
       u,
       h,
       m,
@@ -3022,32 +3022,32 @@ function zl(e, t) {
       h,
       m,
       _,
-      y,
+      b,
       w,
       v
     ) : ue(l, u, v);
-  }, Ke = (l, u, h, m, _, y, w) => {
-    const b = l.component = rc(
+  }, Ke = (l, u, h, m, _, b, w) => {
+    const y = l.component = rc(
       l,
       m,
       _
     );
-    if (a.NODE_ENV !== "production" && b.type.__hmrId && Us(b), a.NODE_ENV !== "production" && (ln(l), Ie(b, "mount")), Io(l) && (b.ctx.renderer = Tt), a.NODE_ENV !== "production" && Ie(b, "init"), cc(b), a.NODE_ENV !== "production" && Pe(b, "init"), b.asyncDep) {
-      if (_ && _.registerDep(b, $), !l.el) {
-        const v = b.subTree = Ae(pe);
+    if (a.NODE_ENV !== "production" && y.type.__hmrId && Us(y), a.NODE_ENV !== "production" && (ln(l), Ie(y, "mount")), Io(l) && (y.ctx.renderer = Tt), a.NODE_ENV !== "production" && Ie(y, "init"), cc(y), a.NODE_ENV !== "production" && Pe(y, "init"), y.asyncDep) {
+      if (_ && _.registerDep(y, $), !l.el) {
+        const v = y.subTree = Ae(pe);
         k(null, v, u, h);
       }
     } else
       $(
-        b,
+        y,
         l,
         u,
         h,
         _,
-        y,
+        b,
         w
       );
-    a.NODE_ENV !== "production" && (cn(), Pe(b, "mount"));
+    a.NODE_ENV !== "production" && (cn(), Pe(y, "mount"));
   }, ue = (l, u, h) => {
     const m = u.component = l.component;
     if (ol(l, u, h))
@@ -3058,15 +3058,15 @@ function zl(e, t) {
         m.next = u, $s(m.update), m.effect.dirty = !0, m.update();
     else
       u.el = l.el, m.vnode = u;
-  }, $ = (l, u, h, m, _, y, w) => {
-    const b = () => {
+  }, $ = (l, u, h, m, _, b, w) => {
+    const y = () => {
       if (l.isMounted) {
         let { next: x, bu: C, u: D, parent: R, vnode: j } = l;
         {
           const mt = wr(l);
           if (mt) {
             x && (x.el = j.el, L(l, x, w)), mt.asyncDep.then(() => {
-              l.isUnmounted || b();
+              l.isUnmounted || y();
             });
             return;
           }
@@ -3085,7 +3085,7 @@ function zl(e, t) {
           Qt(_e),
           l,
           _,
-          y
+          b
         ), a.NODE_ENV !== "production" && Pe(l, "patch"), x.el = ee.el, U === null && il(l, ee.el), D && de(D, _), (G = x.props && x.props.onVnodeUpdated) && de(
           () => xe(G, R, x, j),
           _
@@ -3120,7 +3120,7 @@ function zl(e, t) {
             m,
             l,
             _,
-            y
+            b
           ), a.NODE_ENV !== "production" && Pe(l, "patch"), u.el = ee.el;
         }
         if (j && de(j, _), !G && (x = D && D.onVnodeMounted)) {
@@ -3132,8 +3132,8 @@ function zl(e, t) {
         }
         (u.shapeFlag & 256 || U && fn(U.vnode) && U.vnode.shapeFlag & 256) && l.a && de(l.a, _), l.isMounted = !0, a.NODE_ENV !== "production" && qs(l), u = h = m = null;
       }
-    }, v = l.effect = new bo(
-      b,
+    }, v = l.effect = new yo(
+      y,
       X,
       () => Cn(E),
       l.scope
@@ -3146,7 +3146,7 @@ function zl(e, t) {
     u.component = l;
     const m = l.vnode.props;
     l.vnode = u, l.next = null, jl(l, u.props, m, h), Wl(l, u.children, h), $e(), Zo(l), He();
-  }, Oe = (l, u, h, m, _, y, w, b, v = !1) => {
+  }, Oe = (l, u, h, m, _, b, w, y, v = !1) => {
     const E = l && l.children, x = l ? l.shapeFlag : 0, C = u.children, { patchFlag: D, shapeFlag: R } = u;
     if (D > 0) {
       if (D & 128) {
@@ -3156,9 +3156,9 @@ function zl(e, t) {
           h,
           m,
           _,
-          y,
-          w,
           b,
+          w,
+          y,
           v
         );
         return;
@@ -3169,56 +3169,56 @@ function zl(e, t) {
           h,
           m,
           _,
-          y,
-          w,
           b,
+          w,
+          y,
           v
         );
         return;
       }
     }
-    R & 8 ? (x & 16 && Re(E, _, y), C !== E && g(h, C)) : x & 16 ? R & 16 ? Ct(
+    R & 8 ? (x & 16 && Re(E, _, b), C !== E && g(h, C)) : x & 16 ? R & 16 ? Ct(
       E,
       C,
       h,
       m,
       _,
-      y,
-      w,
       b,
+      w,
+      y,
       v
-    ) : Re(E, _, y, !0) : (x & 8 && g(h, ""), R & 16 && le(
+    ) : Re(E, _, b, !0) : (x & 8 && g(h, ""), R & 16 && le(
       C,
       h,
       m,
       _,
-      y,
-      w,
       b,
+      w,
+      y,
       v
     ));
-  }, Mn = (l, u, h, m, _, y, w, b, v) => {
-    l = l || yt, u = u || yt;
+  }, Mn = (l, u, h, m, _, b, w, y, v) => {
+    l = l || bt, u = u || bt;
     const E = l.length, x = u.length, C = Math.min(E, x);
     let D;
     for (D = 0; D < C; D++) {
-      const R = u[D] = v ? ze(u[D]) : be(u[D]);
+      const R = u[D] = v ? ze(u[D]) : ye(u[D]);
       P(
         l[D],
         R,
         h,
         null,
         _,
-        y,
-        w,
         b,
+        w,
+        y,
         v
       );
     }
     E > x ? Re(
       l,
       _,
-      y,
+      b,
       !0,
       !1,
       C
@@ -3227,18 +3227,18 @@ function zl(e, t) {
       h,
       m,
       _,
-      y,
-      w,
       b,
+      w,
+      y,
       v,
       C
     );
-  }, Ct = (l, u, h, m, _, y, w, b, v) => {
+  }, Ct = (l, u, h, m, _, b, w, y, v) => {
     let E = 0;
     const x = u.length;
     let C = l.length - 1, D = x - 1;
     for (; E <= C && E <= D; ) {
-      const R = l[E], j = u[E] = v ? ze(u[E]) : be(u[E]);
+      const R = l[E], j = u[E] = v ? ze(u[E]) : ye(u[E]);
       if (It(R, j))
         P(
           R,
@@ -3246,9 +3246,9 @@ function zl(e, t) {
           h,
           null,
           _,
-          y,
-          w,
           b,
+          w,
+          y,
           v
         );
       else
@@ -3256,7 +3256,7 @@ function zl(e, t) {
       E++;
     }
     for (; E <= C && E <= D; ) {
-      const R = l[C], j = u[D] = v ? ze(u[D]) : be(u[D]);
+      const R = l[C], j = u[D] = v ? ze(u[D]) : ye(u[D]);
       if (It(R, j))
         P(
           R,
@@ -3264,9 +3264,9 @@ function zl(e, t) {
           h,
           null,
           _,
-          y,
-          w,
           b,
+          w,
+          y,
           v
         );
       else
@@ -3279,23 +3279,23 @@ function zl(e, t) {
         for (; E <= D; )
           P(
             null,
-            u[E] = v ? ze(u[E]) : be(u[E]),
+            u[E] = v ? ze(u[E]) : ye(u[E]),
             h,
             j,
             _,
-            y,
-            w,
             b,
+            w,
+            y,
             v
           ), E++;
       }
     } else if (E > D)
       for (; E <= C; )
-        Be(l[E], _, y, !0), E++;
+        Be(l[E], _, b, !0), E++;
     else {
       const R = E, j = E, U = /* @__PURE__ */ new Map();
       for (E = j; E <= D; E++) {
-        const ce = u[E] = v ? ze(u[E]) : be(u[E]);
+        const ce = u[E] = v ? ze(u[E]) : ye(u[E]);
         ce.key != null && (a.NODE_ENV !== "production" && U.has(ce.key) && O(
           "Duplicate keys found during update:",
           JSON.stringify(ce.key),
@@ -3311,7 +3311,7 @@ function zl(e, t) {
       for (E = R; E <= C; E++) {
         const ce = l[E];
         if (ee >= _e) {
-          Be(ce, _, y, !0);
+          Be(ce, _, b, !0);
           continue;
         }
         let we;
@@ -3323,19 +3323,19 @@ function zl(e, t) {
               we = G;
               break;
             }
-        we === void 0 ? Be(ce, _, y, !0) : (St[we - j] = E + 1, we >= ko ? ko = we : mt = !0, P(
+        we === void 0 ? Be(ce, _, b, !0) : (St[we - j] = E + 1, we >= ko ? ko = we : mt = !0, P(
           ce,
           u[we],
           h,
           null,
           _,
-          y,
-          w,
           b,
+          w,
+          y,
           v
         ), ee++);
       }
-      const Ko = mt ? Jl(St) : yt;
+      const Ko = mt ? Jl(St) : bt;
       for (G = Ko.length - 1, E = _e - 1; E >= 0; E--) {
         const ce = j + E, we = u[ce], Bo = ce + 1 < x ? u[ce + 1].el : m;
         St[E] === 0 ? P(
@@ -3344,15 +3344,15 @@ function zl(e, t) {
           h,
           Bo,
           _,
-          y,
-          w,
           b,
+          w,
+          y,
           v
         ) : mt && (G < 0 || E !== Ko[G] ? gt(we, h, Bo, 2) : G--);
       }
     }
   }, gt = (l, u, h, m, _ = null) => {
-    const { el: y, type: w, transition: b, children: v, shapeFlag: E } = l;
+    const { el: b, type: w, transition: y, children: v, shapeFlag: E } = l;
     if (E & 6) {
       gt(l.component.subTree, u, h, m);
       return;
@@ -3366,7 +3366,7 @@ function zl(e, t) {
       return;
     }
     if (w === Ne) {
-      o(y, u, h);
+      o(b, u, h);
       for (let C = 0; C < v.length; C++)
         gt(v[C], u, h, m);
       o(l.anchor, u, h);
@@ -3376,31 +3376,31 @@ function zl(e, t) {
       z(l, u, h);
       return;
     }
-    if (m !== 2 && E & 1 && b)
+    if (m !== 2 && E & 1 && y)
       if (m === 0)
-        b.beforeEnter(y), o(y, u, h), de(() => b.enter(y), _);
+        y.beforeEnter(b), o(b, u, h), de(() => y.enter(b), _);
       else {
-        const { leave: C, delayLeave: D, afterLeave: R } = b, j = () => o(y, u, h), U = () => {
-          C(y, () => {
+        const { leave: C, delayLeave: D, afterLeave: R } = y, j = () => o(b, u, h), U = () => {
+          C(b, () => {
             j(), R && R();
           });
         };
-        D ? D(y, j, U) : U();
+        D ? D(b, j, U) : U();
       }
     else
-      o(y, u, h);
+      o(b, u, h);
   }, Be = (l, u, h, m = !1, _ = !1) => {
     const {
-      type: y,
+      type: b,
       props: w,
-      ref: b,
+      ref: y,
       children: v,
       dynamicChildren: E,
       shapeFlag: x,
       patchFlag: C,
       dirs: D
     } = l;
-    if (b != null && lo(b, null, h, l, !0), x & 256) {
+    if (y != null && lo(y, null, h, l, !0), x & 256) {
       u.ctx.deactivate(l);
       return;
     }
@@ -3421,13 +3421,13 @@ function zl(e, t) {
         Tt,
         m
       ) : E && // #1153: fast path should not be taken for non-stable (v-for) fragments
-      (y !== Ne || C > 0 && C & 64) ? Re(
+      (b !== Ne || C > 0 && C & 64) ? Re(
         E,
         u,
         h,
         !1,
         !0
-      ) : (y === Ne && C & 384 || !_ && x & 16) && Re(v, u, h), m && Fn(l);
+      ) : (b === Ne && C & 384 || !_ && x & 16) && Re(v, u, h), m && Fn(l);
     }
     (j && (U = w && w.onVnodeUnmounted) || R) && de(() => {
       U && xe(U, u, l), R && ot(l, null, u, "unmounted");
@@ -3444,14 +3444,14 @@ function zl(e, t) {
       J(l);
       return;
     }
-    const y = () => {
+    const b = () => {
       i(h), _ && !_.persisted && _.afterLeave && _.afterLeave();
     };
     if (l.shapeFlag & 1 && _ && !_.persisted) {
-      const { leave: w, delayLeave: b } = _, v = () => w(h, y);
-      b ? b(l.el, y, v) : v();
+      const { leave: w, delayLeave: y } = _, v = () => w(h, b);
+      y ? y(l.el, b, v) : v();
     } else
-      y();
+      b();
   }, Mr = (l, u) => {
     let h;
     for (; l !== u; )
@@ -3459,12 +3459,12 @@ function zl(e, t) {
     i(u);
   }, Fr = (l, u, h) => {
     a.NODE_ENV !== "production" && l.type.__hmrId && ks(l);
-    const { bum: m, scope: _, update: y, subTree: w, um: b } = l;
-    m && _t(m), _.stop(), y && (y.active = !1, Be(w, l, u, h)), b && de(b, u), de(() => {
+    const { bum: m, scope: _, update: b, subTree: w, um: y } = l;
+    m && _t(m), _.stop(), b && (b.active = !1, Be(w, l, u, h)), y && de(y, u), de(() => {
       l.isUnmounted = !0;
     }, u), u && u.pendingBranch && !u.isUnmounted && l.asyncDep && !l.asyncResolved && l.suspenseId === u.pendingId && (u.deps--, u.deps === 0 && u.resolve()), a.NODE_ENV !== "production" && Ys(l);
-  }, Re = (l, u, h, m = !1, _ = !1, y = 0) => {
-    for (let w = y; w < l.length; w++)
+  }, Re = (l, u, h, m = !1, _ = !1, b = 0) => {
+    for (let w = b; w < l.length; w++)
       Be(l[w], u, h, m, _);
   }, Qt = (l) => l.shapeFlag & 6 ? Qt(l.component.subTree) : l.shapeFlag & 128 ? l.suspense.next() : N(l.anchor || l.el);
   let An = !1;
@@ -3541,19 +3541,19 @@ function wr(e) {
     return t.asyncDep && !t.asyncResolved ? t : wr(t);
 }
 const Xl = (e) => e.__isTeleport, Ne = Symbol.for("v-fgt"), Yt = Symbol.for("v-txt"), pe = Symbol.for("v-cmt"), dn = Symbol.for("v-stc"), Ht = [];
-let ye = null;
+let be = null;
 function At(e = !1) {
-  Ht.push(ye = e ? null : []);
+  Ht.push(be = e ? null : []);
 }
 function Ql() {
-  Ht.pop(), ye = Ht[Ht.length - 1] || null;
+  Ht.pop(), be = Ht[Ht.length - 1] || null;
 }
 let Bt = 1;
 function di(e) {
   Bt += e;
 }
 function xr(e) {
-  return e.dynamicChildren = Bt > 0 ? ye || yt : null, Ql(), Bt > 0 && ye && ye.push(e), e;
+  return e.dynamicChildren = Bt > 0 ? be || bt : null, Ql(), Bt > 0 && be && be.push(e), e;
 }
 function sn(e, t, n, o, i, r) {
   return xr(
@@ -3624,13 +3624,13 @@ function H(e, t = null, n = null, o = 0, i = null, r = e === Ne ? 0 : 1, s = !1,
   };
   return c ? (jo(f, n), r & 128 && e.normalize(f)) : n && (f.shapeFlag |= Q(n) ? 8 : 16), a.NODE_ENV !== "production" && f.key !== f.key && O("VNode created with invalid key (NaN). VNode type:", f.type), Bt > 0 && // avoid a block node from tracking itself
   !s && // has current parent block
-  ye && // presence of a patch flag indicates this node needs patching on updates.
+  be && // presence of a patch flag indicates this node needs patching on updates.
   // component nodes also should always be patched, because even if the
   // component doesn't need to update, it needs to persist the instance on to
   // the next vnode so that it can be properly unmounted later.
   (f.patchFlag > 0 || r & 6) && // the EVENTS flag is only for hydration and if it is the only flag, the
   // vnode should not be considered dynamic due to handler caching.
-  f.patchFlag !== 32 && ye.push(f), f;
+  f.patchFlag !== 32 && be.push(f), f;
 }
 const Ae = a.NODE_ENV !== "production" ? ec : Dr;
 function Dr(e, t = null, n = null, o = 0, i = null, r = !1) {
@@ -3641,7 +3641,7 @@ function Dr(e, t = null, n = null, o = 0, i = null, r = !1) {
       !0
       /* mergeRef: true */
     );
-    return n && jo(c, n), Bt > 0 && !r && ye && (c.shapeFlag & 6 ? ye[ye.indexOf(e)] = c : ye.push(c)), c.patchFlag |= -2, c;
+    return n && jo(c, n), Bt > 0 && !r && be && (c.shapeFlag & 6 ? be[be.indexOf(e)] = c : be.push(c)), c.patchFlag |= -2, c;
   }
   if (Ir(e) && (e = e.__vccOpts), t) {
     t = tc(t);
@@ -3723,7 +3723,7 @@ function co(e = " ", t = 0) {
 function Kn(e = "", t = !1) {
   return t ? (At(), Zl(pe, null, e)) : Ae(pe, null, e);
 }
-function be(e) {
+function ye(e) {
   return e == null || typeof e == "boolean" ? Ae(pe) : T(e) ? Ae(
     Ne,
     null,
@@ -3861,7 +3861,7 @@ function rc(e, t, n) {
 }
 let te = null;
 const sc = () => te || ie;
-let bn, fo;
+let yn, fo;
 {
   const e = Eo(), t = (n, o) => {
     let i;
@@ -3869,7 +3869,7 @@ let bn, fo;
       i.length > 1 ? i.forEach((s) => s(r)) : i[0](r);
     };
   };
-  bn = t(
+  yn = t(
     "__VUE_INSTANCE_SETTERS__",
     (n) => te = n
   ), fo = t(
@@ -3879,11 +3879,11 @@ let bn, fo;
 }
 const Jt = (e) => {
   const t = te;
-  return bn(e), e.scope.on(), () => {
-    e.scope.off(), bn(t);
+  return yn(e), e.scope.on(), () => {
+    e.scope.off(), yn(t);
   };
 }, pi = () => {
-  te && te.scope.off(), bn(null);
+  te && te.scope.off(), yn(null);
 }, lc = /* @__PURE__ */ Le("slot,component");
 function uo(e, { isNativeTag: t }) {
   (lc(e) || t(e)) && O(
@@ -4257,14 +4257,14 @@ const _c = "http://www.w3.org/2000/svg", Ec = "http://www.w3.org/1998/Math/MathM
       n ? n.previousSibling : t.lastChild
     ];
   }
-}, bc = Symbol("_vtc");
-function yc(e, t, n) {
-  const o = e[bc];
+}, yc = Symbol("_vtc");
+function bc(e, t, n) {
+  const o = e[yc];
   o && (t = (t ? [t, ...o] : [...o]).join(" ")), t == null ? e.removeAttribute("class") : n ? e.setAttribute("class", t) : e.className = t;
 }
-const yn = Symbol("_vod"), Pr = Symbol("_vsh"), Ge = {
+const bn = Symbol("_vod"), Pr = Symbol("_vsh"), Ge = {
   beforeMount(e, { value: t }, { transition: n }) {
-    e[yn] = e.style.display === "none" ? "" : e.style.display, n && t ? n.beforeEnter(e) : Pt(e, t);
+    e[bn] = e.style.display === "none" ? "" : e.style.display, n && t ? n.beforeEnter(e) : Pt(e, t);
   },
   mounted(e, { value: t }, { transition: n }) {
     n && t && n.enter(e);
@@ -4280,7 +4280,7 @@ const yn = Symbol("_vod"), Pr = Symbol("_vsh"), Ge = {
 };
 je.NODE_ENV !== "production" && (Ge.name = "show");
 function Pt(e, t) {
-  e.style.display = t ? e[yn] : "none", e[Pr] = !t;
+  e.style.display = t ? e[bn] : "none", e[Pr] = !t;
 }
 const vc = Symbol(je.NODE_ENV !== "production" ? "CSS_VAR_TEXT" : ""), Oc = /(^|;)\s*display\s*:/;
 function wc(e, t, n) {
@@ -4305,7 +4305,7 @@ function wc(e, t, n) {
     }
   } else
     t && e.removeAttribute("style");
-  yn in e && (e[yn] = r ? o.display : "", e[Pr] && (o.display = "none"));
+  bn in e && (e[bn] = r ? o.display : "", e[Pr] && (o.display = "none"));
 }
 const xc = /[^\\];\s*$/, Ei = /\s*!important$/;
 function hn(e, t, n) {
@@ -4340,10 +4340,10 @@ function Vc(e, t) {
   }
   return t;
 }
-const bi = "http://www.w3.org/1999/xlink";
+const yi = "http://www.w3.org/1999/xlink";
 function Dc(e, t, n, o, i) {
   if (o && t.startsWith("xlink:"))
-    n == null ? e.removeAttributeNS(bi, t.slice(6, t.length)) : e.setAttributeNS(bi, t, n);
+    n == null ? e.removeAttributeNS(yi, t.slice(6, t.length)) : e.setAttributeNS(yi, t, n);
   else {
     const r = ts(t);
     n == null || r && !Si(n) ? e.removeAttribute(t) : e.setAttribute(t, r ? "" : n);
@@ -4382,9 +4382,9 @@ function Nt(e, t, n, o) {
 function Tc(e, t, n, o) {
   e.removeEventListener(t, n, o);
 }
-const yi = Symbol("_vei");
+const bi = Symbol("_vei");
 function Sc(e, t, n, o, i = null) {
-  const r = e[yi] || (e[yi] = {}), s = r[t];
+  const r = e[bi] || (e[bi] = {}), s = r[t];
   if (o && s)
     s.value = je.NODE_ENV !== "production" ? Oi(o, t) : o;
   else {
@@ -4447,7 +4447,7 @@ function Fc(e, t) {
 const wi = (e) => e.charCodeAt(0) === 111 && e.charCodeAt(1) === 110 && // lowercase letter
 e.charCodeAt(2) > 96 && e.charCodeAt(2) < 123, Ac = (e, t, n, o, i, r, s, c, f) => {
   const d = i === "svg";
-  t === "class" ? yc(e, o, d) : t === "style" ? wc(e, n, o) : Wt(t) ? gn(t) || Sc(e, t, n, o, s) : (t[0] === "." ? (t = t.slice(1), !0) : t[0] === "^" ? (t = t.slice(1), !1) : jc(e, t, o, d)) ? Cc(
+  t === "class" ? bc(e, o, d) : t === "style" ? wc(e, n, o) : Wt(t) ? gn(t) || Sc(e, t, n, o, s) : (t[0] === "." ? (t = t.slice(1), !0) : t[0] === "^" ? (t = t.slice(1), !1) : jc(e, t, o, d)) ? Cc(
     e,
     t,
     o,
@@ -4608,7 +4608,7 @@ const Xc = (e, t) => {
       createdBlobURLs: /* @__PURE__ */ new Set(),
       video: null,
       showing: !1,
-      tool: null,
+      tool: "",
       result: null,
       time: 0,
       gifTime: [0, 0],
@@ -4622,16 +4622,11 @@ const Xc = (e, t) => {
       y: 0
     };
   },
-  watch: {},
-  computed: {
-    /* time:{
-    	get(){
-    		return this.tText(this.getTime());
-    	},
-    	set(v){
-    		this.setTime(v);
-    	}
-    } */
+  watch: {
+    tool(e) {
+      const t = this.video;
+      e === "gif" ? (t._rawStyle || (t._rawStyle = t.style["aspect-ratio"] || ""), t.style["aspect-ratio"] = t.videoWidth / t.videoHeight) : t.style["aspect-ratio"] = t._rawStyle;
+    }
   },
   methods: {
     setTime(e) {
@@ -4692,7 +4687,7 @@ const Xc = (e, t) => {
       if (!this.video)
         return;
       const e = this.video, t = this.$refs.canvas;
-      e.pause();
+      t.style["aspect-ratio"] = t.width / t.height, e.pause();
       try {
         this.gifRecording = !0, this.canvasFitVideo(this.gifScale ?? 1, this.gifRangeSelector);
         const n = [];
@@ -4965,20 +4960,20 @@ function Ef(e, t, n, o, i, r) {
     ])
   ], 64);
 }
-const Nf = /* @__PURE__ */ Xc(ef, [["render", Ef], ["__scopeId", "data-v-dee80196"]]), bf = Bc(Nf), po = document.createElement("div");
+const Nf = /* @__PURE__ */ Xc(ef, [["render", Ef], ["__scopeId", "data-v-057d7473"]]), yf = Bc(Nf), po = document.createElement("div");
 po.style = "position:fixed;top:0;left:0;z-index:2147483647;font-size: 12px!important;";
-let Ut, bt;
+let Ut, yt;
 window.addEventListener("mousedown", (e) => {
   if (!(e.button === 2 && e.altKey))
     return;
-  e.preventDefault(), e.stopPropagation(), bt && !document.contains(bt) && (bt = null);
+  e.preventDefault(), e.stopPropagation(), yt && !document.contains(yt) && (yt = null);
   let t = e.target, n;
   if (t.localName === "video" ? n = t : n = t.querySelector("video"), !n) {
     let o = 5;
     for (; o-- && (t = t.parentNode, !(t === document || (n = t.querySelector("video"), n))); )
       ;
   }
-  n ? (bt = n, Ut || (document.body.appendChild(po), Ut = bf.mount(po)), Ut.show(e.clientX, e.clientY, n, e.shiftKey ? void 0 : "screenshot")) : n = bt;
+  n ? (yt = n, Ut || (document.body.appendChild(po), Ut = yf.mount(po)), Ut.show(e.clientX, e.clientY, n, e.shiftKey ? void 0 : "screenshot")) : n = yt;
 });
 document.addEventListener("contextmenu", (e) => {
   !Ut || !Ut.showing || !e.altKey || (e.preventDefault(), e.stopPropagation());
@@ -4987,7 +4982,7 @@ window.addEventListener("keydown", (e) => {
   if (!e.code.startsWith("Arrow") || !(e.ctrlKey || e.shiftKey) || e.repeat)
     return;
   let t, n;
-  const o = [...document.querySelectorAll("video")].filter((i) => (i === bt && (n = i), i.duration >= 300));
+  const o = [...document.querySelectorAll("video")].filter((i) => (i === yt && (n = i), i.duration >= 300));
   if (o.length !== 0 && (o.length > 1 ? t = o.filter((i) => !i.paused)[0] : n ? t = n : t = o[0], !!t))
     switch ((e.code === "ArrowRight" || e.code === "ArrowLeft") && (e.preventDefault(), e.stopPropagation()), e.code) {
       case "ArrowRight":
