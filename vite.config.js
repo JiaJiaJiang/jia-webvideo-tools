@@ -9,6 +9,9 @@ export default defineConfig({//https://cn.vitejs.dev/config/build-options
 		vue(),
 		cssInjectedByJsPlugin(),
 	],
+	define: {
+		'process.env': {},
+	},
 	build: {
 		target: 'esnext',
 		sourcemap: true,
