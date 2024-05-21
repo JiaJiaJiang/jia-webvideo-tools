@@ -4966,7 +4966,7 @@ function Ef(e, t, n, o, i, r) {
   ], 64);
 }
 const Nf = /* @__PURE__ */ Xc(ef, [["render", Ef], ["__scopeId", "data-v-dee80196"]]), bf = Bc(Nf), po = document.createElement("div");
-po.style = "position:fixed;top:0;left:0;z-index:2147483647;";
+po.style = "position:fixed;top:0;left:0;z-index:2147483647;font-size: 12px!important;";
 let Ut, bt;
 window.addEventListener("mousedown", (e) => {
   if (!(e.button === 2 && e.altKey))

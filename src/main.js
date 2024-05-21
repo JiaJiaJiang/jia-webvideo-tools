@@ -1,9 +1,8 @@
-
 import { createApp } from 'vue'
 import App from './app.vue'
 const app = createApp(App);
 const div = document.createElement('div');
-div.style = 'position:fixed;top:0;left:0;z-index:2147483647;';
+div.style = 'position:fixed;top:0;left:0;z-index:2147483647;font-size: 12px!important;';
 let vm;
 /* 
 events to trigger toolbar
