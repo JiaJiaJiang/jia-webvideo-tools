@@ -21,7 +21,7 @@ export default defineConfig({//https://cn.vitejs.dev/config/build-options
 				compact: true,
 			},
 			external: [
-				// 'imagescript',
+				'imagescript',
 				// 'vue'
 			],
 		},
