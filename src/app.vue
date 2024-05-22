@@ -309,7 +309,6 @@ export default {
 		stopRecordGIF() {
 			this.gifEncoding = false;
 			this.gifRecording = false;
-			this.gifRangeSelector = false;
 		},
 		canvasFitVideo(scale = 1, useRange = false) {
 			const v = this.video, canvas = this.$refs.canvas;
