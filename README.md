@@ -2,6 +2,8 @@
 
 Load this script to the page and the function will be triggered by the following events.
 
+Tampermonkey script: https://gist.github.com/JiaJiaJiang/736f5a90b55b815a0e9eb6463dd09061
+
 ### Alt + Right_mouse_button on video area
 
 Quickly take a video screenshot, the image will popup on the page, then you can save it or just close it by clicking any area.
