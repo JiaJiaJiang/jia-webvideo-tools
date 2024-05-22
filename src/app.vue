@@ -284,6 +284,7 @@ export default {
 						lastFrameTime = thisFrameTime;
 						requestAnimationFrame(getFrame);
 					}
+					await delay(100);
 					await v.play();
 					getFrame();
 				});
@@ -336,5 +337,8 @@ export default {
 	unmounted() {
 		window.removeEventListener('wheel', this.wheelEvent);
 	}
+}
+async function delay(ms) {
+	return new Promise(resolve => setTimeout(resolve, ms));
 }
 </script>
