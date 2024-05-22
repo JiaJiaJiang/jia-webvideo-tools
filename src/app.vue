@@ -1,5 +1,6 @@
 <template>
-	<div v-if="showing && gifRangeSelector" id="range_selector" :style="gifRangeSelectorStyle()">
+	<div v-if="showing && (tool == 'gif') && gifRangeSelector" id="range_selector"
+		 :style="gifRangeSelectorStyle()">
 	</div>
 	<div id="jia-video-tool" v-if="showing == 'toolbar'" :style="{ left: x + 'px', top: y + 'px' }"
 		 @drag="">
@@ -20,11 +21,11 @@
 		<div v-if="tool == 'gif'" id="row1">
 			<div title="设置开始时间" opt @click="gifTime[0] = getTime()">⏺️</div>
 			<div title="设置结束时间" opt @click="gifTime[1] = getTime()">⏹️</div>
-			<div><input v-model.number="gifTime[0]" placeholder="start" :style="fitInputValue(gifTime[0])"
-					   @dblclick="setTime(tText(gifTime[0]))">
+			<div><input v-model.number="gifTime[0]" placeholder="start"
+					   :style="fitInputValue(gifTime[0])" @dblclick="setTime(tText(gifTime[0]))">
 			</div>
-			<div><input v-model.number="gifTime[1]" placeholder="end" :style="fitInputValue(gifTime[1])"
-					   @dblclick="setTime(tText(gifTime[1]))">
+			<div><input v-model.number="gifTime[1]" placeholder="end"
+					   :style="fitInputValue(gifTime[1])" @dblclick="setTime(tText(gifTime[1]))">
 			</div>
 			<div title="GIF循环" opt :actived="gifLoop" @click="gifLoop = !gifLoop">🔁</div>
 			<div title="GIF缩放">🔍<input type="number" max="1" min="0.1" step="0.1"
@@ -38,15 +39,15 @@
 		</div>
 		<div id="row2" v-show="tool == 'gif' && gifRangeSelector" style="display: flex;">
 			范围:
-			<input title="x(滚轮调整)" placeholder="x" v-model.number="gifRangeOpt.x" type="number" min="0"
-				   step="1" :max="video.videoWidth - gifRangeOpt.width"
+			<input title="x(滚轮调整)" placeholder="x" v-model.number="gifRangeOpt.x" type="number"
+				   min="0" step="1" :max="video.videoWidth - gifRangeOpt.width"
 				   @wheel="wheelNumber($event, 'x')">
-			<input title="y(滚轮调整)" placeholder="y" v-model.number="gifRangeOpt.y" type="number" min="0"
-				   step="1" :max="video.videoHeight - gifRangeOpt.height"
+			<input title="y(滚轮调整)" placeholder="y" v-model.number="gifRangeOpt.y" type="number"
+				   min="0" step="1" :max="video.videoHeight - gifRangeOpt.height"
 				   @wheel="wheelNumber($event, 'y')">
-			<input title="width(滚轮调整)" placeholder="width" v-model.number="gifRangeOpt.width" type="number"
-				   :max="video.videoWidth - gifRangeOpt.x + 1" @wheel="wheelNumber($event, 'width')"
-				   :disabled="gifRecording" min="0" step="1">
+			<input title="width(滚轮调整)" placeholder="width" v-model.number="gifRangeOpt.width"
+				   type="number" :max="video.videoWidth - gifRangeOpt.x + 1"
+				   @wheel="wheelNumber($event, 'width')" :disabled="gifRecording" min="0" step="1">
 			<input title="height(滚轮调整)" placeholder="height" v-model.number="gifRangeOpt.height"
 				   type="number" :max="video.videoHeight - gifRangeOpt.y + 1"
 				   :disabled="gifRecording" @wheel="wheelNumber($event, 'height')" min="0" step="1">
@@ -136,6 +137,7 @@ import { encodeGIF } from './gif';
 export default {
 	props: [],
 	data() {
+
 		return {
 			createdBlobURLs: new Set(),
 			video: null,
@@ -152,6 +154,7 @@ export default {
 			gifRangeOpt: { x: 0, y: 0, width: 500, height: 500 },
 			x: 0,
 			y: 0,
+			saveableSettings: ['gifTime', 'gifLoop', 'gifScale', 'gifRangeSelector', 'gifRangeOpt'],
 		};
 	},
 	watch: {
@@ -247,6 +250,7 @@ export default {
 			if (!this.video) return;
 			const v = this.video, canvas = this.$refs.canvas;
 			canvas.style['aspect-ratio'] = canvas.width / canvas.height;
+			this.saveSetting();
 			v.pause();
 			try {
 				this.gifRecording = true;
@@ -257,7 +261,7 @@ export default {
 				const THIS = this;
 				await new Promise(async (ok, ojbk) => {
 					function getFrame() {
-						if (v.currentTime > (THIS.gifTime[1]+(frameTime/1000)) || !THIS.gifRecording) {
+						if (v.currentTime > THIS.gifTime[1] || !THIS.gifRecording) {
 							v.pause();
 							if (THIS.gifRecording) { ok(); }
 							else { ojbk('abort'); }
@@ -324,6 +328,25 @@ export default {
 		fitInputValue(value) {
 			return { width: String(value).length / 1.8 + 'em' }
 		},
+		saveSetting() {
+			const obj = {
+				lastLocation: location.href
+			};
+			for (let n of this.saveableSettings) {
+				if (n in this === false) throw (`setting "${n} not defined"`);
+				obj[n] = this[n];
+			}
+			localStorage.setItem('jia-webvideo-tools', JSON.stringify(obj));
+		},
+		loadSetting() {
+			let savedSettings = JSON.parse(localStorage.getItem('jia-webvideo-tools') || '{}');
+			if (savedSettings.lastLocation !== location.href) savedSettings = {};
+			for (let n of this.saveableSettings) {
+				if (n in savedSettings) {
+					this[n] = savedSettings[n];
+				}
+			}
+		},
 	},
 	mounted() {
 		this.$refs.canvas.ctx = this.$refs.canvas.getContext('2d', { willReadFrequently: true });
@@ -332,6 +355,7 @@ export default {
 			this.$forceUpdate();
 		};
 		window.addEventListener('wheel', this.wheelEvent);
+		this.loadSetting();
 	},
 	unmounted() {
 		window.removeEventListener('wheel', this.wheelEvent);
