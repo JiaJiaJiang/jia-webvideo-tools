@@ -12,8 +12,7 @@
 				<div title="时间微调←" @click="timeOffset(-1)" opt>◀️</div>
 				<div title="时间微调→" @click="timeOffset(1)" opt>▶️</div>
 				<input title="当前视频时间（秒）" :value="time" type="text"
-					   @change="setTime($event.target.value)"
-					   @wheel="wheelTime($event)"
+					   @change="setTime($event.target.value)" @wheel="wheelTime($event)"
 					   :style="fitInputValue(time)" />
 			</div>
 			<div @click="hide" opt>❌</div>
@@ -47,10 +46,10 @@
 				   @wheel="wheelNumber($event, 'y')">
 			<input title="width(滚轮调整)" placeholder="width" v-model="gifRangeOpt.width" type="number"
 				   :max="video.videoWidth - gifRangeOpt.x + 1" @wheel="wheelNumber($event, 'width')"
-				   min="0" step="1">
+				   :disabled="gifRecording" min="0" step="1">
 			<input title="height(滚轮调整)" placeholder="height" v-model="gifRangeOpt.height"
 				   type="number" :max="video.videoHeight - gifRangeOpt.y + 1"
-				   @wheel="wheelNumber($event, 'height')" min="0" step="1">
+				   :disabled="gifRecording" @wheel="wheelNumber($event, 'height')" min="0" step="1">
 		</div>
 	</div>
 	<dialog v-show="showing == 'result'" ref="dialog" @click.left="hide">
@@ -156,15 +155,15 @@ export default {
 		};
 	},
 	watch: {
-		tool(value){
-			const v=this.video;
-			if(value==='gif'){
-				if(!v._rawStyle){
-					v._rawStyle=v.style['object-fit']||'';
+		tool(value) {
+			const v = this.video;
+			if (value === 'gif') {
+				if (!v._rawStyle) {
+					v._rawStyle = v.style['object-fit'] || '';
 				}
-				v.style['object-fit']='fill';
-			}else{
-				v.style['object-fit']=v._rawStyle;
+				v.style['object-fit'] = 'fill';
+			} else {
+				v.style['object-fit'] = v._rawStyle;
 			}
 		}
 	},
@@ -231,6 +230,7 @@ export default {
 			ev.preventDefault();
 			ev.stopPropagation();
 			const target = ev.target;
+			if (target.disabled) return;
 			let v = Number(target.value), max = Number(target.max);
 			if (!Number.isSafeInteger(v)) v = 0;
 			v += ev.wheelDeltaY * (ev.shiftKey ? 10 : 1)
@@ -238,7 +238,7 @@ export default {
 			if (v > max) v = max;
 			this.gifRangeOpt[valueName] = v;
 		},
-		wheelTime(ev){
+		wheelTime(ev) {
 			ev.preventDefault();
 			ev.stopPropagation();
 			ev.wheelDeltaY > 0 ? this.timeOffset(1) : this.timeOffset(-1)
@@ -251,30 +251,33 @@ export default {
 			try {
 				this.gifRecording = true;
 				this.canvasFitVideo(this.gifScale ?? 1, this.gifRangeSelector);
+				const tmpImageData = canvas.ctx.createImageData(canvas.width, canvas.height);
 				const frames = [];
 				let lastFullImageData;
 				v.currentTime = this.gifTime[0];
 				const frameTime = 1000 / 24;
 				let lastFrameTime = 0;
-				v.play();
 				const THIS = this;
-				await new Promise((ok, ojbk) => {
+				await new Promise(async (ok, ojbk) => {
 					function getFrame() {
+						//把视频绘制到canvas
 						if (THIS.gifRangeSelector) {
 							const opt = THIS.gifRangeOpt;
 							canvas.ctx.drawImage(v, opt.x, opt.y, opt.width, opt.height, 0, 0, canvas.width, canvas.height);
 						} else {
 							canvas.ctx.drawImage(v, 0, 0, canvas.width, canvas.height);
 						}
+						//读取canvas像素RGBA信息
 						const imageData = canvas.ctx.getImageData(0, 0, canvas.width, canvas.height);
 						const thisFrameTime = Date.now(), lastDuration = thisFrameTime - lastFrameTime;
-						const diff = THIS.frameDiff(imageData, lastFullImageData);
-						if (frames.length) {
-							frames[frames.length - 1].duration = lastDuration;//修正前一帧的时长
+						if (frames.length) {//修正前一帧的时长
+							frames[frames.length - 1].duration = lastDuration;
 						}
+						//获取此帧和上一帧的差异
+						const diff = THIS.frameDiff(imageData, lastFullImageData, tmpImageData);
 						if (diff === 0) {
 							//未变化，不用更新lastFrameTime
-							//这里不修改lastFullImageData，以免积累的微小变化无法显示
+							//不修改lastFullImageData，以免积累的微小变化无法显示
 						} else {
 							const f = new Frame(diff.diffImageData.width, diff.diffImageData.height, frameTime, diff.x, diff.y);
 							f.bitmap = diff.diffImageData.data;
@@ -284,12 +287,14 @@ export default {
 						}
 					}
 					getFrame();
+					await v.play();
 					const timer = setInterval(async () => {
-						if (v.currentTime >= this.gifTime[1] || !this.gifRecording) {
+						if (v.currentTime > this.gifTime[1] || !this.gifRecording) {
 							clearInterval(timer);
 							v.pause();
 							if (this.gifRecording) { ok(); }
 							else { ojbk('abort'); }
+							return;
 						}
 						getFrame();
 					}, frameTime);
@@ -317,27 +322,51 @@ export default {
 			this.gifRecording = false;
 			this.gifRangeSelector = false;
 		},
-		frameDiff(newImageData, preImageData) {
+		frameDiff(newImageData, preImageData, tmpImageData) {
 			/* 返回0表示无变化，否则返回对象{x,y,diffImageData} */
 			if (!preImageData) return { x: 0, y: 0, diffImageData: newImageData };
 			const maxDiffValue = 5, canvas = this.$refs.canvas;
-			const newData = newImageData.data, preData = preImageData.data, genImageData = canvas.ctx.createImageData(newImageData), genData = genImageData.data;
-			//只更新这一帧相对上一帧完整画面的不同之处
-			for (let i = 0; i < newData.length; i += 4) {
-				const diff = Math.max(
-					Math.abs(newData[i] - preData[i]),
-					Math.abs(newData[i + 1] - preData[i + 1]),
-					Math.abs(newData[i + 2] - preData[i + 2]),
-					Math.abs(newData[i + 3] - preData[i + 3]),
-				);
-				if (diff > maxDiffValue) {
-					genData[i] = newData[i];;
-					genData[i + 1] = newData[i + 1];
-					genData[i + 2] = newData[i + 2];
-					genData[i + 3] = newData[i + 3];
+			let leftTop = [canvas.width, canvas.height], rightBottom = [0, 0];
+			const newData = newImageData.data, preData = preImageData.data, tmpData = tmpImageData.data;
+			//只更新这一帧相对上一帧完整画面的不同之处，并进行裁剪
+			for (let x = 0; x < canvas.width; x++) {
+				for (let y = 0; y < canvas.height; y++) {
+					//忽略位于leftTop和rightBottom中间的点
+					const i = (y * canvas.width + x) * 4;
+					const diff = Math.max(
+						Math.abs(newData[i] - preData[i]),
+						Math.abs(newData[i + 1] - preData[i + 1]),
+						Math.abs(newData[i + 2] - preData[i + 2]),
+						Math.abs(newData[i + 3] - preData[i + 3]),
+					);
+					if (diff > maxDiffValue) {
+						if (x < leftTop[0]) leftTop[0] = x;
+						else if (x > rightBottom[0]) rightBottom[0] = x;
+						if (y < leftTop[1]) leftTop[1] = y;
+						else if (y > rightBottom[1]) rightBottom[1] = y;
+						tmpData[i] = newData[i];;
+						tmpData[i + 1] = newData[i + 1];
+						tmpData[i + 2] = newData[i + 2];
+						tmpData[i + 3] = newData[i + 3];
+					} else {
+						tmpData.fill(0, i, i + 4);
+					}
 				}
 			}
-			return { x: 0, y: 0, diffImageData: genImageData };
+			const newWidth = rightBottom[0] - leftTop[0] + 1, newHeight = rightBottom[1] - leftTop[1] + 1;
+			if (newWidth <= 0 || newHeight <= 0) return 0;
+			const genImageData = canvas.ctx.createImageData(newWidth, newHeight);
+			if (newWidth === canvas.width && newHeight === canvas.height) {
+				genImageData.data.set(tmpData);
+			} else {
+				for (let row = 0; row < newHeight; row++) {
+					const startI = (leftTop[1] + row) * canvas.width * 4 + leftTop[0] * 4;
+					genImageData.data.set(tmpData.subarray(startI, startI + newWidth * 4), row * newWidth * 4);
+				}
+			}
+			return {
+				x: leftTop[0], y: leftTop[1], diffImageData: genImageData
+			};
 		},
 		canvasFitVideo(scale = 1, useRange = false) {
 			const v = this.video, canvas = this.$refs.canvas;
