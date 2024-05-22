@@ -36,7 +36,7 @@ function frameDiff(newImageData, preImageData, tmpData) {
 	/* 返回0表示无变化，否则返回对象{x,y,diffImageData} */
 	if (!preImageData) return { x: 0, y: 0, diffImageData: newImageData };
 	const { width, height } = newImageData;
-	const maxDiffValue = 4;
+	const maxDiffValue = 5;
 	let leftTop = [width, height], rightBottom = [0, 0];
 	const newData = newImageData.data, preData = preImageData.data;
 	//只更新这一帧相对上一帧完整画面的不同之处，并进行裁剪

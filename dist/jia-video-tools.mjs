@@ -4615,7 +4615,7 @@ async function Zc(e, t) {
 function ef(e, t, n) {
   if (!t)
     return { x: 0, y: 0, diffImageData: e };
-  const { width: o, height: i } = e, r = 4;
+  const { width: o, height: i } = e, r = 5;
   let s = [o, i], c = [0, 0];
   const u = e.data, p = t.data;
   for (let O = 0; O < o; O++)
