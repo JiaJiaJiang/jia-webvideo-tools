@@ -4609,13 +4609,13 @@ async function Zc(e, t) {
       T.bitmap = O.diffImageData.data, c.push(T), n = d;
     }
   }
-  const p = await new Qc(c, r).encode(90);
+  const p = await new Qc(c, r).encode(92);
   return URL.createObjectURL(new Blob([p], { type: "image/gif" }));
 }
 function ef(e, t, n) {
   if (!t)
     return { x: 0, y: 0, diffImageData: e };
-  const { width: o, height: i } = e, r = 5;
+  const { width: o, height: i } = e, r = 4;
   let s = [o, i], c = [0, 0];
   const u = e.data, p = t.data;
   for (let O = 0; O < o; O++)
