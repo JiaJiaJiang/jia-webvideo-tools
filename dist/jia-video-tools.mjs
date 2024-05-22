@@ -1,4 +1,4 @@
-(function(){"use strict";try{if(typeof document<"u"){var e=document.createElement("style");e.appendChild(document.createTextNode(".jia-webvideo-tools-abs6r98e54aw3e{object-fit:fill!important}#jia-video-tool[data-v-33dc4e8e]{position:fixed;border:1px solid #ccc;background-color:#999;border-radius:.3em}#jia-video-tool [opt][data-v-33dc4e8e]{user-select:none;cursor:pointer;padding:0 .1em;vertical-align:middle}#jia-video-tool [opt][data-v-33dc4e8e]:hover,#jia-video-tool [opt][actived=true][data-v-33dc4e8e]{background-color:#333}#jia-video-tool>div[data-v-33dc4e8e]{padding:.2em;display:flex}#jia-video-tool>div div[data-v-33dc4e8e]{word-wrap:nowrap;word-break:keep-all;display:inline-block}#jia-video-tool #row2>input[data-v-33dc4e8e]{width:4em}#jia-video-tool input[data-v-33dc4e8e]{min-width:3em}#range_selector[data-v-33dc4e8e]{border:2px dashed #6d8500;box-shadow:0 0 0 100vmax #000a;position:fixed;pointer-events:none}dialog[data-v-33dc4e8e]{position:fixed;display:flex;padding:0;top:0;left:0;justify-content:center;border:0;max-width:100vw;max-height:100vh;align-items:center;width:100%;height:100%;background:#000000b4}dialog canvas[data-v-33dc4e8e],dialog img[data-v-33dc4e8e]{max-width:90%;max-height:90%;border:2px solid #000}.fadeLoop[data-v-33dc4e8e]{animation:fadeLoop-33dc4e8e 1s infinite}@keyframes fadeLoop-33dc4e8e{0%{opacity:1}50%{opacity:0}to{opacity:1}}")),document.head.appendChild(e)}}catch(d){console.error("vite-plugin-css-injected-by-js",d)}})();
+(function(){"use strict";try{if(typeof document<"u"){var a=document.createElement("style");a.appendChild(document.createTextNode(".jia-webvideo-tools-abs6r98e54aw3e{object-fit:fill!important}#jia-video-tool[data-v-6a771963]{position:fixed;border:1px solid #ccc;background-color:#999;border-radius:.3em}#jia-video-tool [opt][data-v-6a771963]{user-select:none;cursor:pointer;padding:0 .1em;vertical-align:middle}#jia-video-tool [opt][data-v-6a771963]:hover,#jia-video-tool [opt][actived=true][data-v-6a771963]{background-color:#333}#jia-video-tool>div[data-v-6a771963]{padding:.2em;display:flex}#jia-video-tool>div div[data-v-6a771963]{word-wrap:nowrap;word-break:keep-all;display:inline-block}#jia-video-tool #row2>input[data-v-6a771963]{width:4em}#jia-video-tool input[data-v-6a771963]{min-width:3em}#range_selector[data-v-6a771963]{border:2px dashed #6d8500;box-shadow:0 0 0 100vmax #000a;position:fixed;pointer-events:none}dialog[data-v-6a771963]{position:fixed;display:flex;padding:0;top:0;left:0;justify-content:center;border:0;max-width:100vw;max-height:100vh;align-items:center;width:100%;height:100%;background:#000000b4}dialog canvas[data-v-6a771963],dialog img[data-v-6a771963]{max-width:90%;max-height:90%;border:2px solid #000}.fadeLoop[data-v-6a771963]{animation:fadeLoop-6a771963 1s infinite}@keyframes fadeLoop-6a771963{0%{opacity:1}50%{opacity:0}to{opacity:1}}")),document.head.appendChild(a)}}catch(o){console.error("vite-plugin-css-injected-by-js",o)}})();
 var Ci = {};
 /**
 * @vue/shared v3.4.27
@@ -4760,7 +4760,7 @@ const tu = (e, t) => {
               e.pause(), s.gifRecording ? f() : p("abort");
               return;
             }
-            this.updateCanvas(n);
+            s.updateCanvas(n);
             const d = performance.now(), E = d - r;
             if (o.length && (o[o.length - 1].duration = E, E < i - 4)) {
               requestAnimationFrame(g);
@@ -5061,7 +5061,7 @@ function Nu(e, t, n, o, i, r) {
     ])
   ], 64);
 }
-const yu = /* @__PURE__ */ tu(nu, [["render", Nu], ["__scopeId", "data-v-33dc4e8e"]]), vu = Bc(yu), po = document.createElement("div");
+const yu = /* @__PURE__ */ tu(nu, [["render", Nu], ["__scopeId", "data-v-6a771963"]]), vu = Bc(yu), po = document.createElement("div");
 po.style = "position:fixed;top:0;left:0;z-index:2147483647;font-size: 12px!important;";
 let Ut, Nt;
 window.addEventListener("mousedown", (e) => {

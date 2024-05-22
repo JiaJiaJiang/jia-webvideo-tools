@@ -281,7 +281,7 @@ export default {
 							else { ojbk('abort'); }
 							return;
 						}
-						this.updateCanvas(useRange);
+						THIS.updateCanvas(useRange);
 						const thisFrameTime = performance.now(), lastDuration = thisFrameTime - lastFrameTime;
 						if (frames.length) {//修正前一帧的时长
 							frames[frames.length - 1].duration = lastDuration;
