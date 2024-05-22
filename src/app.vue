@@ -217,7 +217,7 @@ export default {
 			for (let u of this.createdBlobURLs) {
 				URL.revokeObjectURL(u);
 			}
-			this.rangeSelector=false;
+			this.rangeSelector = false;
 			this.stopRecordGIF();
 		},
 		timeOffset(offset) {
@@ -261,8 +261,20 @@ export default {
 			ev.wheelDeltaY > 0 ? this.timeOffset(1) : this.timeOffset(-1)
 		},
 		async startRecordGIF() {
-			if (!this.video) return;
-			const v = this.video, canvas = this.$refs.canvas, useRange = this.rangeSelector;
+			const v = this.video;
+			if (!v) return;
+			//如果视频和当前页面不同域，尝试为其设置crossOrigin属性
+			if (!v.src.startsWith('blob')) {
+				const videoURL = new URL(v.src);
+				if (videoURL.host !== location.host && !v.hasAttribute('crossOrigin')) {
+					v.setAttribute('crossOrigin', 'anonymous');
+				}
+				if (location.protocol !== 'http:' && videoURL.protocol !== location.protocol) {
+					videoURL.protocol = location.protocol;
+					v.src = videoURL.toString();
+				}
+			}
+			const canvas = this.$refs.canvas, useRange = this.rangeSelector;
 			canvas.style['aspect-ratio'] = canvas.width / canvas.height;
 			this.saveSetting();
 			v.pause();
