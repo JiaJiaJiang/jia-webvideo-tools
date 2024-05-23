@@ -1,4 +1,4 @@
-(function(){"use strict";try{if(typeof document<"u"){var d=document.createElement("style");d.appendChild(document.createTextNode(".jia-webvideo-tools-abs6r98e54aw3e{object-fit:fill!important}#range_selector[data-v-dfd54f2e],#jia-video-tool[data-v-dfd54f2e]{position:fixed}#jia-video-tool[data-v-dfd54f2e]{position:fixed;border:1px solid #ccc;background-color:#999;border-radius:.3em}#jia-video-tool [opt][data-v-dfd54f2e]{user-select:none;cursor:pointer;padding:0 .1em;vertical-align:middle}#jia-video-tool [opt][data-v-dfd54f2e]:hover,#jia-video-tool [opt][actived=true][data-v-dfd54f2e]{background-color:#333}#jia-video-tool>div[data-v-dfd54f2e]{padding:.2em;display:flex}#jia-video-tool>div div[data-v-dfd54f2e]{word-wrap:nowrap;word-break:keep-all;display:inline-block}#jia-video-tool #row2>input[data-v-dfd54f2e]{width:4em}#jia-video-tool input[data-v-dfd54f2e]{min-width:3em}#range_selector[data-v-dfd54f2e]{border:2px dashed #6d8500;box-shadow:0 0 0 100vmax #000a;position:fixed;pointer-events:none}dialog[data-v-dfd54f2e]{position:fixed;display:flex;padding:0;top:0;left:0;justify-content:center;border:0;max-width:100vw;max-height:100vh;align-items:center;width:100%;height:100%;background:#000000b4}dialog canvas[data-v-dfd54f2e],dialog img[data-v-dfd54f2e]{max-width:90%;max-height:90%;border:2px solid #000}.fadeLoop[data-v-dfd54f2e]{animation:fadeLoop-dfd54f2e 1s infinite}@keyframes fadeLoop-dfd54f2e{0%{opacity:1}50%{opacity:0}to{opacity:1}}")),document.head.appendChild(d)}}catch(e){console.error("vite-plugin-css-injected-by-js",e)}})();
+(function(){"use strict";try{if(typeof document<"u"){var a=document.createElement("style");a.appendChild(document.createTextNode(".jia-webvideo-tools-abs6r98e54aw3e{object-fit:fill!important}#range_selector[data-v-ab46a5b9],#jia-video-tool[data-v-ab46a5b9]{position:fixed}#jia-video-tool[data-v-ab46a5b9]{position:fixed;border:1px solid #ccc;background-color:#999;border-radius:.3em}#jia-video-tool [opt][data-v-ab46a5b9]{user-select:none;cursor:pointer;padding:0 .1em;vertical-align:middle}#jia-video-tool [opt][data-v-ab46a5b9]:hover,#jia-video-tool [opt][actived=true][data-v-ab46a5b9]{background-color:#333}#jia-video-tool>div[data-v-ab46a5b9]{padding:.2em;display:flex}#jia-video-tool>div div[data-v-ab46a5b9]{word-wrap:nowrap;word-break:keep-all;display:inline-block}#jia-video-tool #row2>input[data-v-ab46a5b9]{width:4em}#jia-video-tool input[data-v-ab46a5b9]{min-width:3em}#range_selector[data-v-ab46a5b9]{border:2px dashed #6d8500;box-shadow:0 0 0 100vmax #000a;position:fixed;pointer-events:none}dialog[data-v-ab46a5b9]{position:fixed;display:flex;padding:0;top:0;left:0;justify-content:center;border:0;max-width:100vw;max-height:100vh;align-items:center;width:100%;height:100%;background:#000000b4}dialog canvas[data-v-ab46a5b9],dialog img[data-v-ab46a5b9]{max-width:90%;max-height:90%;border:2px solid #000}.fadeLoop[data-v-ab46a5b9]{animation:fadeLoop-ab46a5b9 1s infinite}@keyframes fadeLoop-ab46a5b9{0%{opacity:1}50%{opacity:0}to{opacity:1}}")),document.head.appendChild(a)}}catch(o){console.error("vite-plugin-css-injected-by-js",o)}})();
 var Ci = {};
 /**
 * @vue/shared v3.4.27
@@ -4751,6 +4751,10 @@ const tu = (e, t) => {
         const o = new URL(e.src);
         o.host !== location.host && !e.hasAttribute("crossOrigin") && e.setAttribute("crossOrigin", "anonymous"), location.protocol !== "http:" && o.protocol !== location.protocol && (o.protocol = location.protocol, e.src = o.toString());
       }
+      if (this.gifTime[0] >= this.gifTime[1]) {
+        alert("请选择正确的时间范围");
+        return;
+      }
       const t = this.$refs.canvas, n = this.rangeSelector;
       t.style["aspect-ratio"] = t.width / t.height, this.saveSetting(), e.pause();
       try {
@@ -4759,7 +4763,7 @@ const tu = (e, t) => {
         e.currentTime = this.gifTime[0];
         let r = 0;
         const s = this;
-        await new Promise(async (f, p) => {
+        if (await new Promise(async (f, p) => {
           function g() {
             if (e.currentTime > s.gifTime[1] || !s.gifRecording) {
               e.pause(), s.gifRecording ? f() : p("abort");
@@ -4775,7 +4779,9 @@ const tu = (e, t) => {
             o.push({ imageData: w, duration: i }), r = d, requestAnimationFrame(g);
           }
           await ou(100), await e.play(), g();
-        }), this.gifRecording = !1, this.gifEncoding = !0, this.$forceUpdate();
+        }), o.length < 2)
+          throw "视频太短，无法生成gif";
+        this.gifRecording = !1, this.gifEncoding = !0, this.$forceUpdate();
         const c = await Zc(o, {
           loop: this.gifLoop ? -1 : 0
         });
@@ -5066,7 +5072,7 @@ function Nu(e, t, n, o, i, r) {
     ])
   ], 64);
 }
-const yu = /* @__PURE__ */ tu(nu, [["render", Nu], ["__scopeId", "data-v-dfd54f2e"]]), vu = Bc(yu), po = document.createElement("div");
+const yu = /* @__PURE__ */ tu(nu, [["render", Nu], ["__scopeId", "data-v-ab46a5b9"]]), vu = Bc(yu), po = document.createElement("div");
 po.style = "position:fixed;top:0;left:0;z-index:2147483647;font-size: 12px!important;";
 let Ut, Nt;
 window.addEventListener("mousedown", (e) => {

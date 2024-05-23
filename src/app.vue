@@ -64,7 +64,7 @@
 }
 </style>
 <style lang="scss" scoped>
-#range_selector,#jia-video-tool{
+#range_selector, #jia-video-tool {
 	position: fixed;
 }
 #jia-video-tool {
@@ -277,6 +277,10 @@ export default {
 					v.src = videoURL.toString();
 				}
 			}
+			if (this.gifTime[0] >= this.gifTime[1]) {
+				alert('请选择正确的时间范围');
+				return;
+			}
 			const canvas = this.$refs.canvas, useRange = this.rangeSelector;
 			canvas.style['aspect-ratio'] = canvas.width / canvas.height;
 			this.saveSetting();
@@ -315,6 +319,7 @@ export default {
 					await v.play();
 					getFrame();
 				});
+				if(frames.length < 2) throw '视频太短，无法生成gif';
 				this.gifRecording = false;
 				this.gifEncoding = true;
 				this.$forceUpdate();
