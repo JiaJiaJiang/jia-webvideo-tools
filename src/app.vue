@@ -64,6 +64,9 @@
 }
 </style>
 <style lang="scss" scoped>
+#range_selector,#jia-video-tool{
+	position: fixed;
+}
 #jia-video-tool {
 	position: fixed;
 	border: 1px solid #ccc;
@@ -258,7 +261,7 @@ export default {
 		wheelTime(ev) {
 			ev.preventDefault();
 			ev.stopPropagation();
-			ev.wheelDeltaY > 0 ? this.timeOffset(1) : this.timeOffset(-1)
+			(ev.wheelDeltaY > 0) ? this.timeOffset(1) : this.timeOffset(-1);
 		},
 		async startRecordGIF() {
 			const v = this.video;
