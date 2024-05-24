@@ -1,4 +1,4 @@
-const { Frame, GIF } = ImageScript;
+import { Frame, GIF } from 'imagescript';
 /**
  *compress and encode GIF
  *
