@@ -25,6 +25,7 @@ export async function encodeGIF(frames, options) {
 			targetFrames.push(f);
 			lastChangedFrame = frame;
 		}
+		await immediate();
 	}
 	const gif = new GIF(targetFrames, loop);
 	const buf = await gif.encode(92);
@@ -78,4 +79,7 @@ function frameDiff(newImageData, preImageData, tmpData) {
 	return {
 		x: leftTop[0], y: leftTop[1], diffImageData: genImageData
 	};
+}
+async function immediate() {
+	return new Promise(resolve => setImmediate(resolve));
 }

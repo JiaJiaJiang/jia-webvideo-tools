@@ -4608,6 +4608,7 @@ async function Zc(e, t) {
       const T = new Xc(w.diffImageData.width, w.diffImageData.height, d.duration, w.x, w.y);
       T.bitmap = w.diffImageData.data, c.push(T), n = d;
     }
+    await tu();
   }
   const p = await new Qc(c, r).encode(92);
   return URL.createObjectURL(new Blob([p], { type: "image/gif" }));
@@ -4645,12 +4646,15 @@ function eu(e, t, n) {
     diffImageData: E
   };
 }
-const tu = (e, t) => {
+async function tu() {
+  return new Promise((e) => setImmediate(e));
+}
+const nu = (e, t) => {
   const n = e.__vccOpts || e;
   for (const [o, i] of t)
     n[o] = i;
   return n;
-}, nu = {
+}, ou = {
   props: [],
   data() {
     return {
@@ -4778,7 +4782,7 @@ const tu = (e, t) => {
             const w = t.ctx.getImageData(0, 0, t.width, t.height);
             o.push({ imageData: w, duration: i }), r = d, requestAnimationFrame(g);
           }
-          await ou(100), await e.play(), g();
+          await iu(100), await e.play(), g();
         }), o.length < 2)
           throw "视频太短，无法生成gif";
         this.gifRecording = !1, this.gifEncoding = !0, this.$forceUpdate();
@@ -4829,23 +4833,23 @@ const tu = (e, t) => {
     window.removeEventListener("wheel", this.wheelEvent);
   }
 };
-async function ou(e) {
+async function iu(e) {
   return new Promise((t) => setTimeout(t, e));
 }
-const iu = ["actived"], ru = ["actived"], su = { id: "time_tool" }, lu = ["value"], cu = {
+const ru = ["actived"], su = ["actived"], lu = { id: "time_tool" }, cu = ["value"], uu = {
   key: 0,
   id: "row1"
-}, uu = ["actived"], fu = { title: "GIF缩放" }, au = {
+}, fu = ["actived"], au = { title: "GIF缩放" }, du = {
   title: "正在录制",
   class: "fadeLoop"
-}, du = {
+}, pu = {
   title: "正在编码",
   class: "fadeLoop"
-}, pu = {
+}, hu = {
   id: "row2",
   style: { display: "flex" }
-}, hu = ["max"], gu = ["max"], mu = ["max", "disabled"], _u = ["max", "disabled"], Eu = { ref: "canvas" }, bu = { ref: "img" };
-function Nu(e, t, n, o, i, r) {
+}, gu = ["max"], mu = ["max"], _u = ["max", "disabled"], Eu = ["max", "disabled"], bu = { ref: "canvas" }, Nu = { ref: "img" };
+function yu(e, t, n, o, i, r) {
   return At(), sn(Ee, null, [
     i.showing && i.rangeSelector ? (At(), sn("div", {
       key: 0,
@@ -4870,14 +4874,14 @@ function Nu(e, t, n, o, i, r) {
           actived: i.tool == "gif",
           onClick: t[1] || (t[1] = (s) => i.tool = i.tool === "gif" ? "" : "gif"),
           opt: ""
-        }, " ✂", 8, iu),
+        }, " ✂", 8, ru),
         H("div", {
           title: "框选区域",
           opt: "",
           actived: i.rangeSelector,
           onClick: t[2] || (t[2] = (s) => i.rangeSelector = !i.rangeSelector)
-        }, " 🔲", 8, ru),
-        H("div", su, [
+        }, " 🔲", 8, su),
+        H("div", lu, [
           H("div", {
             title: "时间微调←",
             onClick: t[3] || (t[3] = (s) => r.timeOffset(-1)),
@@ -4895,14 +4899,14 @@ function Nu(e, t, n, o, i, r) {
             onChange: t[5] || (t[5] = (s) => r.setTime(s.target.value)),
             onWheel: t[6] || (t[6] = (s) => r.wheelTime(s)),
             style: Ye(r.fitInputValue(i.time))
-          }, null, 44, lu)
+          }, null, 44, cu)
         ]),
         H("div", {
           onClick: t[7] || (t[7] = (...s) => r.hide && r.hide(...s)),
           opt: ""
         }, "❌")
       ]),
-      i.tool == "gif" ? (At(), sn("div", cu, [
+      i.tool == "gif" ? (At(), sn("div", uu, [
         H("div", {
           title: "设置开始时间",
           opt: "",
@@ -4948,8 +4952,8 @@ function Nu(e, t, n, o, i, r) {
           opt: "",
           actived: i.gifLoop,
           onClick: t[14] || (t[14] = (s) => i.gifLoop = !i.gifLoop)
-        }, "🔁", 8, uu),
-        H("div", fu, [
+        }, "🔁", 8, fu),
+        H("div", au, [
           co("🔍"),
           ae(H("input", {
             type: "number",
@@ -4974,14 +4978,14 @@ function Nu(e, t, n, o, i, r) {
         }, "✅ ", 512), [
           [Ge, !i.gifEncoding && !i.gifRecording]
         ]),
-        ae(H("div", au, "🎦", 512), [
+        ae(H("div", du, "🎦", 512), [
           [Ge, i.gifRecording]
         ]),
-        ae(H("div", du, "🕒", 512), [
+        ae(H("div", pu, "🕒", 512), [
           [Ge, i.gifEncoding]
         ])
       ])) : Kn("", !0),
-      ae(H("div", pu, [
+      ae(H("div", hu, [
         co(" 范围: "),
         ae(H("input", {
           title: "x(滚轮调整)",
@@ -4992,7 +4996,7 @@ function Nu(e, t, n, o, i, r) {
           step: "1",
           max: i.video.videoWidth - i.rangeOpt.width,
           onWheel: t[18] || (t[18] = (s) => r.wheelNumber(s, "x"))
-        }, null, 40, hu), [
+        }, null, 40, gu), [
           [
             rt,
             i.rangeOpt.x,
@@ -5009,7 +5013,7 @@ function Nu(e, t, n, o, i, r) {
           step: "1",
           max: i.video.videoHeight - i.rangeOpt.height,
           onWheel: t[20] || (t[20] = (s) => r.wheelNumber(s, "y"))
-        }, null, 40, gu), [
+        }, null, 40, mu), [
           [
             rt,
             i.rangeOpt.y,
@@ -5027,7 +5031,7 @@ function Nu(e, t, n, o, i, r) {
           disabled: i.gifRecording,
           min: "0",
           step: "1"
-        }, null, 40, mu), [
+        }, null, 40, _u), [
           [
             rt,
             i.rangeOpt.width,
@@ -5045,7 +5049,7 @@ function Nu(e, t, n, o, i, r) {
           onWheel: t[24] || (t[24] = (s) => r.wheelNumber(s, "height")),
           min: "0",
           step: "1"
-        }, null, 40, _u), [
+        }, null, 40, Eu), [
           [
             rt,
             i.rangeOpt.height,
@@ -5061,10 +5065,10 @@ function Nu(e, t, n, o, i, r) {
       ref: "dialog",
       onClick: t[26] || (t[26] = Uc((...s) => r.hide && r.hide(...s), ["left"]))
     }, [
-      ae(H("canvas", Eu, null, 512), [
+      ae(H("canvas", bu, null, 512), [
         [Ge, i.result === "canvas"]
       ]),
-      ae(H("img", bu, null, 512), [
+      ae(H("img", Nu, null, 512), [
         [Ge, i.result === "img"]
       ])
     ], 512), [
@@ -5072,7 +5076,7 @@ function Nu(e, t, n, o, i, r) {
     ])
   ], 64);
 }
-const yu = /* @__PURE__ */ tu(nu, [["render", Nu], ["__scopeId", "data-v-ab46a5b9"]]), vu = Bc(yu), po = document.createElement("div");
+const vu = /* @__PURE__ */ nu(ou, [["render", yu], ["__scopeId", "data-v-ab46a5b9"]]), Ou = Bc(vu), po = document.createElement("div");
 po.style = "position:fixed;top:0;left:0;z-index:2147483647;font-size: 12px!important;";
 let Ut, Nt;
 window.addEventListener("mousedown", (e) => {
@@ -5085,7 +5089,7 @@ window.addEventListener("mousedown", (e) => {
     for (; o-- && (t = t.parentNode, !(t === document || (n = t.querySelector("video"), n))); )
       ;
   }
-  n ? (Nt = n, Ut || (document.body.appendChild(po), Ut = vu.mount(po)), Ut.show(e.clientX, e.clientY, n, e.shiftKey ? void 0 : "screenshot")) : n = Nt;
+  n ? (Nt = n, Ut || (document.body.appendChild(po), Ut = Ou.mount(po)), Ut.show(e.clientX, e.clientY, n, e.shiftKey ? void 0 : "screenshot")) : n = Nt;
 });
 document.addEventListener("contextmenu", (e) => {
   !Ut || !Ut.showing || !e.altKey || (e.preventDefault(), e.stopPropagation());
