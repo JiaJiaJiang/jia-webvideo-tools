@@ -1,5 +1,7 @@
 # jia-webvideo-tools
 
+Tampermonkey script: https://gist.github.com/JiaJiaJiang/736f5a90b55b815a0e9eb6463dd09061
+
 Load this script to the page and the function will be triggered by the following events.
 
 ### Alt + Right_mouse_button on video area
