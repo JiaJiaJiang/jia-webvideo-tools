@@ -1,4 +1,4 @@
-import { Frame, GIF } from 'imagescript';
+const { Frame, GIF } = ImageScript;
 /**
  *compress and encode GIF
  *
@@ -81,5 +81,5 @@ function frameDiff(newImageData, preImageData, tmpData) {
 	};
 }
 async function immediate() {
-	return new Promise(resolve => setImmediate(resolve));
+	return new Promise(resolve => requestAnimationFrame(resolve));
 }
