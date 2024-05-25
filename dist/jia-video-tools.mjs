@@ -1,4 +1,4 @@
-(function(){"use strict";try{if(typeof document<"u"){var d=document.createElement("style");d.appendChild(document.createTextNode(".jia-webvideo-tools-abs6r98e54aw3e{object-fit:fill!important}#range_selector[data-v-299822dd],#jia-video-tool[data-v-299822dd]{position:fixed}#jia-video-tool[data-v-299822dd]{position:fixed;border:1px solid #ccc;background-color:#999;border-radius:.3em}#jia-video-tool [opt][data-v-299822dd]{user-select:none;cursor:pointer;padding:0 .1em;vertical-align:middle}#jia-video-tool [opt][data-v-299822dd]:hover,#jia-video-tool [opt][actived=true][data-v-299822dd]{background-color:#333}#jia-video-tool>div[data-v-299822dd]{padding:.2em;display:flex}#jia-video-tool>div div[data-v-299822dd]{word-wrap:nowrap;word-break:keep-all;display:inline-block}#jia-video-tool #row2>input[data-v-299822dd]{width:4em}#jia-video-tool input[data-v-299822dd]{min-width:3em}#range_selector[data-v-299822dd]{border:2px dashed #6d8500;box-shadow:0 0 0 100vmax #000a;position:fixed;pointer-events:none}dialog[data-v-299822dd]{position:fixed;display:flex;padding:0;top:0;left:0;justify-content:center;border:0;max-width:100vw;max-height:100vh;align-items:center;width:100%;height:100%;background:#000000b4}dialog canvas[data-v-299822dd],dialog img[data-v-299822dd]{max-width:90%;max-height:90%;border:2px solid #000}.fadeLoop[data-v-299822dd]{animation:fadeLoop-299822dd 1s infinite}@keyframes fadeLoop-299822dd{0%{opacity:1}50%{opacity:0}to{opacity:1}}")),document.head.appendChild(d)}}catch(o){console.error("vite-plugin-css-injected-by-js",o)}})();
+(function(){"use strict";try{if(typeof document<"u"){var d=document.createElement("style");d.appendChild(document.createTextNode(".jia-webvideo-tools-abs6r98e54aw3e{object-fit:fill!important}#range_selector[data-v-3fd5322d],#jia-video-tool[data-v-3fd5322d]{position:fixed}#jia-video-tool[data-v-3fd5322d]{position:fixed;border:1px solid #ccc;background-color:#999;border-radius:.3em}#jia-video-tool [opt][data-v-3fd5322d]{user-select:none;cursor:pointer;padding:0 .1em;vertical-align:middle}#jia-video-tool [opt][data-v-3fd5322d]:hover,#jia-video-tool [opt][actived=true][data-v-3fd5322d]{background-color:#333}#jia-video-tool>div[data-v-3fd5322d]{padding:.2em;display:flex}#jia-video-tool>div div[data-v-3fd5322d]{word-wrap:nowrap;word-break:keep-all;display:inline-block}#jia-video-tool #row2>input[data-v-3fd5322d]{width:4em}#jia-video-tool input[data-v-3fd5322d]{min-width:3em}#range_selector[data-v-3fd5322d]{border:2px dashed #6d8500;box-shadow:0 0 0 100vmax #000a;position:fixed;pointer-events:none}dialog[data-v-3fd5322d]{position:fixed;display:flex;padding:0;top:0;left:0;justify-content:center;border:0;max-width:100vw;max-height:100vh;align-items:center;width:100%;height:100%;background:#000000b4}dialog canvas[data-v-3fd5322d],dialog img[data-v-3fd5322d]{max-width:90%;max-height:90%;border:2px solid #000}.fadeLoop[data-v-3fd5322d]{animation:fadeLoop-3fd5322d 1s infinite}@keyframes fadeLoop-3fd5322d{0%{opacity:1}50%{opacity:0}to{opacity:1}}")),document.head.appendChild(d)}}catch(o){console.error("vite-plugin-css-injected-by-js",o)}})();
 var Ci = {};
 /**
 * @vue/shared v3.4.27
@@ -4753,7 +4753,10 @@ const nu = (e, t) => {
         return;
       if (!e.src.startsWith("blob")) {
         const o = new URL(e.src);
-        o.host !== location.host && !e.hasAttribute("crossOrigin") && e.setAttribute("crossOrigin", "anonymous"), location.protocol !== "http:" && o.protocol !== location.protocol && (o.protocol = location.protocol, e.src = o.toString());
+        if (o.host !== location.host && !e.hasAttribute("crossOrigin") && e.setAttribute("crossOrigin", "anonymous"), location.protocol !== "http:" && o.protocol !== location.protocol) {
+          const i = e.playbackRate;
+          o.protocol = location.protocol, e.src = o.toString(), e.playbackRate = i;
+        }
       }
       if (this.gifTime[0] >= this.gifTime[1]) {
         alert("请选择正确的时间范围");
@@ -5076,7 +5079,7 @@ function yu(e, t, n, o, i, r) {
     ])
   ], 64);
 }
-const vu = /* @__PURE__ */ nu(ou, [["render", yu], ["__scopeId", "data-v-299822dd"]]), Ou = Bc(vu), po = document.createElement("div");
+const vu = /* @__PURE__ */ nu(ou, [["render", yu], ["__scopeId", "data-v-3fd5322d"]]), Ou = Bc(vu), po = document.createElement("div");
 po.style = "position:fixed;top:0;left:0;z-index:2147483647;font-size: 12px!important;";
 let Ut, Nt;
 window.addEventListener("mousedown", (e) => {

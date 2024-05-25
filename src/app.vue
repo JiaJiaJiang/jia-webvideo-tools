@@ -273,8 +273,10 @@ export default {
 					v.setAttribute('crossOrigin', 'anonymous');
 				}
 				if (location.protocol !== 'http:' && videoURL.protocol !== location.protocol) {
+					const rawSpeed = v.playbackRate;
 					videoURL.protocol = location.protocol;
 					v.src = videoURL.toString();
+					v.playbackRate = rawSpeed;
 				}
 			}
 			if (this.gifTime[0] >= this.gifTime[1]) {
@@ -319,7 +321,7 @@ export default {
 					await v.play();
 					getFrame();
 				});
-				if(frames.length < 2) throw '视频太短，无法生成gif';
+				if (frames.length < 2) throw '视频太短，无法生成gif';
 				this.gifRecording = false;
 				this.gifEncoding = true;
 				this.$forceUpdate();
