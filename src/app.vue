@@ -4,7 +4,7 @@
 	<div id="jia-video-tool" v-if="showing == 'toolbar'" :style="{ left: x + 'px', top: y + 'px' }"
 		 @drag="">
 		<div>
-			<div title="截图" @click="screenshot" opt>📷</div>
+			<div title="截图" @click="screenshot()" opt>📷</div>
 			<div title="截取GIF" :actived="tool == 'gif'"
 				 @click="tool = (tool === 'gif' ? '' : 'gif')" opt>
 				✂</div>
