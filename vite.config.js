@@ -4,6 +4,7 @@ import vue from '@vitejs/plugin-vue'
 import cssInjectedByJsPlugin from "vite-plugin-css-injected-by-js";
 // https://vitejs.dev/config/
 export default defineConfig({//https://cn.vitejs.dev/config/build-options
+	clearScreen: false,
 	root: './',
 	plugins: [
 		vue(),
@@ -15,6 +16,7 @@ export default defineConfig({//https://cn.vitejs.dev/config/build-options
 	build: {
 		target: 'esnext',
 		sourcemap: true,
+		minify: true,
 		lib: {
 			entry: resolve(__dirname, 'src/main.js'),
 			name: 'jia_video_tools',

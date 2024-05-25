@@ -5095,7 +5095,7 @@ document.addEventListener("contextmenu", (e) => {
   !Ut || !Ut.showing || !e.altKey || (e.preventDefault(), e.stopPropagation());
 });
 window.addEventListener("keydown", (e) => {
-  if (!e.code.startsWith("Arrow") || !(e.ctrlKey || e.shiftKey) || e.repeat)
+  if (!e.code || !e.code.startsWith("Arrow") || !(e.ctrlKey || e.shiftKey) || e.repeat)
     return;
   let t, n;
   const o = [...document.querySelectorAll("video")].filter((i) => (i === Nt && (n = i), i.duration >= 300));

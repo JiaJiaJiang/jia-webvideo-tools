@@ -51,6 +51,7 @@ document.addEventListener('contextmenu', ev => {
 
 //快捷跳转
 window.addEventListener('keydown', ev => {
+	if (!ev.code) return;
 	if (!ev.code.startsWith('Arrow') || !(ev.ctrlKey || ev.shiftKey) || ev.repeat) return;
 	//寻找目标video
 	let video, matchedLastVideo;
